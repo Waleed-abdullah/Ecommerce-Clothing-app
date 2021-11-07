@@ -4,13 +4,22 @@ import './Signin.css';
 import { auth, provider } from '../../firebase';
 import { particleOptions } from './particleOptions';
 
-const Signin = () => {
+const Signin = ({currentUser, setCurrentUser}) => {
+
   // event handler for sign in button
   const signin = async () => {
     auth
       .signInWithPopup(provider)
       .then((result) => {
-        console.log(result.user);
+        console.log(result.user.multiFactor.user);
+
+        const temp = result.user.multiFactor.user;
+        setCurrentUser({
+          uid: temp.uid,
+          name: temp.displayName,
+          email: temp.email,
+        })
+      
       })
       .catch((error) => alert(error.message));
   };
