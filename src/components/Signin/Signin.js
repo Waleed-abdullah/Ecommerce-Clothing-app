@@ -3,23 +3,30 @@ import Particles from 'react-tsparticles';
 import './Signin.css';
 import { auth, provider } from '../../firebase';
 import { particleOptions } from './particleOptions';
+import { useStateValue } from '../../State/StateProvider';
+import { actionTypes } from '../../State/Reducer';
 
-const Signin = ({currentUser, setCurrentUser}) => {
+const Signin = () => {
+  const [{user, testDetails}, dispatch] = useStateValue()
 
   // event handler for sign in button
   const signin = async () => {
     auth
       .signInWithPopup(provider)
       .then((result) => {
-        console.log(result.user.multiFactor.user);
-
+        console.log(user)
+        console.log(testDetails)
         const temp = result.user.multiFactor.user;
-        setCurrentUser({
-          uid: temp.uid,
-          name: temp.displayName,
-          email: temp.email,
+
+        // sends data/state to the store
+        dispatch({
+          type: actionTypes.SET_USER,
+          user: {
+            uid: temp.uid,
+            name: temp.displayName,
+            email: temp.email,
+          }
         })
-      
       })
       .catch((error) => alert(error.message));
   };
