@@ -15,11 +15,6 @@ const reducer = (initialState, action) => {
                 ...initialState,
                 user: action.user
             }
-        case actionTypes.SET_TEST:
-            return {
-                ...initialState,
-                testDetails: action.testDetails
-            }
         default:
             return initialState
     }
