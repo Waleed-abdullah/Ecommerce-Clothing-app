@@ -1,10 +1,11 @@
+import React, {useState} from 'react'
 import './App.css';
 import Signin from './components/Signin/Signin';
 
-function App() {
+const App = () => {
   return (
     <div>
-      <Signin />
+      <Signin/>
     </div>
   );
 }
