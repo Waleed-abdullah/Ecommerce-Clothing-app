@@ -1,11 +1,13 @@
 import React, {useState} from 'react'
 import './App.css';
 import Signin from './components/Signin/Signin';
+import ProfileInfo from './components/ProfileInfo/ProfileInfo';
 
 const App = () => {
   return (
     <div>
-      <Signin/>
+      <meta content="width=device-width, initial-scale=1" name="viewport" />
+      <ProfileInfo/>
     </div>
   );
 }

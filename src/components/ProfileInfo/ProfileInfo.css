@@ -1,0 +1,46 @@
+.backgroundLeft {
+    position: absolute;
+    background-size: 393px;
+    width: 393px;
+    height: 394px;
+    
+
+    background-image: url('../../assets/eg22.png');
+    opacity: 1.0;
+    transform: rotate(360deg);
+
+}
+
+.backgroundRight {
+    position: absolute;
+    background-size: 393px;
+    width: 393px;
+    height: 394px;
+    
+
+    right: 0px;
+    bottom: 0px;
+
+    background-image: url('../../assets/eg22.png');
+    opacity: 1.0;
+    transform: rotate(180deg);
+}
+
+@media screen and (max-width: 900px) {
+    .backgroundLeft {
+        /*
+        background-size: 150px;
+        width: 150px;
+        height: 150px;
+        */
+        display: none;
+    }
+    .backgroundRight {
+        /*
+        background-size: 150px;
+        width: 150px;
+        height: 150px;
+        */
+        display: none;
+    }
+}
