@@ -1,21 +1,20 @@
 import React from 'react';
-import Particles from 'react-tsparticles';
 import './Signin.css';
+import Logo from './Logo/Logo';
 import { auth, provider } from '../../firebase';
-import { particleOptions } from './particleOptions';
 import { useStateValue } from '../../State/StateProvider';
 import { actionTypes } from '../../State/Reducer';
 
 const Signin = () => {
-  const [{user, testDetails}, dispatch] = useStateValue()
+  const [{ user, testDetails }, dispatch] = useStateValue();
 
   // event handler for sign in button
   const signin = async () => {
     auth
       .signInWithPopup(provider)
       .then((result) => {
-        console.log(user)
-        console.log(testDetails)
+        console.log(user);
+        console.log(testDetails);
         const temp = result.user.multiFactor.user;
 
         // sends data/state to the store
@@ -25,21 +24,18 @@ const Signin = () => {
             uid: temp.uid,
             name: temp.displayName,
             email: temp.email,
-          }
-        })
+          },
+        });
       })
-      .catch((error) => alert(error.message));
+      .catch((error) => console.log(error.message));
   };
 
   return (
-    <div className="Signin">
-      <Particles className="particles" options={particleOptions} />
-      <h1>Explore</h1>
-      <button
-        className="f6 grow no-underline br-pill ph3 pv2 mb2 dib white bg-black"
-        type="submit"
-        onClick={signin}
-      >
+    <div>
+      <div className="imageContainer">
+        <Logo />
+      </div>
+      <button type="submit" onClick={signin}>
         Signin
       </button>
     </div>
