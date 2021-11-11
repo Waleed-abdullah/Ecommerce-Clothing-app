@@ -1,10 +1,10 @@
 import React from 'react';
 import './Signin.css';
-import exploreLogo from './images/Explore Logo.png';
 import Logo from './Logo/Logo';
 import { auth, provider } from '../../firebase';
 import { useStateValue } from '../../State/StateProvider';
 import { actionTypes } from '../../State/Reducer';
+import { Button } from '@mui/material';
 
 const Signin = () => {
   const [{ user, testDetails }, dispatch] = useStateValue();
@@ -35,13 +35,19 @@ const Signin = () => {
     <div>
       <div className="imageContainer">
         <Logo />
-        {
-          //<img className="imageResize" src={exploreLogo} alt="logo" />}
-        }
       </div>
-      <button type="submit" onClick={signin}>
-        Signin
-      </button>
+      <Button
+        style={{
+          borderRadius: 20,
+          padding: '7px 18px',
+          backgroundImage:
+            'linear-gradient( to right,#da22ff 0%,#9733ee 51%, #da22ff 100% )',
+        }}
+        variant="contained"
+        onClick={signin}
+      >
+        Sign in
+      </Button>
     </div>
   );
 };

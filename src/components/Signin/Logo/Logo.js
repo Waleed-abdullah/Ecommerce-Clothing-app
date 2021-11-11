@@ -5,13 +5,13 @@ import explore from '../images/Explore Logo.png';
 const Logo = () => {
   return (
     <div>
-      <Tilt
-        className="Tilt"
-        options={{ max: 15 }}
-        style={{ height: 100, width: 100 }}
-      >
+      <Tilt className="Tilt" options={{ max: 15 }}>
         <div className="Tilt-inner">
-          <img style={{ width: 100, height: 100 }} alt="logo" src={explore} />{' '}
+          <img
+            style={{ maxWidth: '80%', height: '80%' }}
+            alt="logo"
+            src={explore}
+          />{' '}
         </div>
       </Tilt>
     </div>
