@@ -12,7 +12,7 @@ const useStyles = makeStyles({
     },
 }})
 
-export const SaveProfileButton = () => {
+const SaveProfileButton = () => {
     const classes = useStyles()
 
     return (
@@ -24,3 +24,5 @@ export const SaveProfileButton = () => {
         </Button>
     )
 }
+
+export default SaveProfileButton

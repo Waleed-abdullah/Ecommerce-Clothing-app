@@ -10,9 +10,11 @@ const useStyles = makeStyles(theme => ({
     }
 }))
 
-export const StyledTextField = (props) => {
+const StyledTextField = (props) => {
     const classes = useStyles();
     return (
       <TextField InputProps={{ classes, disableUnderline: true }} {...props} />
     );
 }
+
+export default StyledTextField

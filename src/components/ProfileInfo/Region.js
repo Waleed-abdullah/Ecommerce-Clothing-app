@@ -1,8 +1,7 @@
 import Box from '@mui/material/Box';
-import { FormControl, InputLabel, MenuItem, Select, Typography } from '@mui/material'
+import { FormControl, MenuItem, Select, Typography } from '@mui/material'
 import { makeStyles } from '@material-ui/styles';
 import React from 'react'
-import { borderColor, borderRadius } from '@mui/system';
 
 const useStyles = makeStyles(theme => ({
     formControl: {
@@ -12,7 +11,7 @@ const useStyles = makeStyles(theme => ({
     }
 }))
 
-export const Region = () => {
+const Region = () => {
     const classes = useStyles();
 
     return (
@@ -29,7 +28,7 @@ export const Region = () => {
         Region
         </Typography>
         <FormControl className={classes.formControl}>
-            <Select>
+            <Select defaultValue={1}>
                 <MenuItem value={1}>Pakistan</MenuItem>
                 <MenuItem value={2}>USA</MenuItem>
                 <MenuItem value={3}>India</MenuItem>
@@ -39,3 +38,5 @@ export const Region = () => {
         </Box>
     )
 }
+
+export default Region

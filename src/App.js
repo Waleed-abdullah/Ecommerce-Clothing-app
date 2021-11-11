@@ -1,6 +1,6 @@
-import React, {useState} from 'react'
+import React from 'react'
 import './App.css';
-import Signin from './components/Signin/Signin';
+//import Signin from './components/Signin/Signin';
 import ProfileInfo from './components/ProfileInfo/ProfileInfo';
 
 const App = () => {

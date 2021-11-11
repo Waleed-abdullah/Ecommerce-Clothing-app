@@ -1,19 +1,27 @@
-import React from 'react'
+import React, {useState} from 'react'
+
 import { ThemeProvider } from "@mui/material/styles";
-import { theme } from './Theme';
 import CssBaseline from "@mui/material/CssBaseline";
 import './ProfileInfo.css'
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import { Typography } from '@mui/material';
-import { StyledTextField } from './StyledTextField';
-import { Region } from './Region';
-import { SaveProfileButton } from './SaveProfileButton';
-import { Interests } from './Interests'
 
+import StyledTextField from './StyledTextField';
+import Region from './Region';
+import SaveProfileButton from './SaveProfileButton';
+import Interests from './Interests'
+import { theme } from './Theme';
 
 
 const ProfileInfo = () => {
+    const [name, setName] = useState('')
+
+    const handleChangeInName = (event) => {
+        console.log(event.target.value)
+        setName(event.target.value)
+    }
+
     return (
         <ThemeProvider theme={theme}>
             <CssBaseline/>
@@ -40,7 +48,9 @@ const ProfileInfo = () => {
                         variant='outlined' 
                         type='text'
                         name='name'
-                        id='name-input'>
+                        id='name-input'
+                        onChange={handleChangeInName}
+                        value={name}>
                     </StyledTextField>
                     </Box>
 
@@ -68,7 +78,7 @@ const ProfileInfo = () => {
                     <Region/>
 
                     <Interests/>
-                    
+
                     <SaveProfileButton/>
                 </form>
             </Box>
