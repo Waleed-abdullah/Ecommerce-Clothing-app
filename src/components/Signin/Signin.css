@@ -24,8 +24,13 @@ h1 {
 }
 
 .imageContainer {
-  text-align: center;
-  border-radius: 25rem;
-  margin-top: auto;
-  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  object-fit: cover;
+}
+
+.imageResize {
+  max-width: 80%;
+  height: auto;
 }

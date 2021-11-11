@@ -1,5 +1,6 @@
 import React from 'react';
 import './Signin.css';
+import exploreLogo from './images/Explore Logo.png';
 import Logo from './Logo/Logo';
 import { auth, provider } from '../../firebase';
 import { useStateValue } from '../../State/StateProvider';
@@ -34,6 +35,9 @@ const Signin = () => {
     <div>
       <div className="imageContainer">
         <Logo />
+        {
+          //<img className="imageResize" src={exploreLogo} alt="logo" />}
+        }
       </div>
       <button type="submit" onClick={signin}>
         Signin
