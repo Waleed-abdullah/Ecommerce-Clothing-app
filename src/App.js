@@ -10,6 +10,6 @@ const App = () => {
       <ProfileInfo/>
     </div>
   );
-}
+};
 
 export default App;

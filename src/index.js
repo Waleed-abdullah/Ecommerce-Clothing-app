@@ -3,14 +3,11 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import { StateProvider } from './State/StateProvider';
-import reducer, {initialState} from './State/Reducer';
-import 'tachyons';
+import reducer, { initialState } from './State/Reducer';
 
 ReactDOM.render(
-  <React.StrictMode>
-    <StateProvider initialState={initialState} reducer={reducer}>
-      <App />
-    </StateProvider>
-  </React.StrictMode>,
+  <StateProvider initialState={initialState} reducer={reducer}>
+    <App />
+  </StateProvider>,
   document.getElementById('root')
 );
