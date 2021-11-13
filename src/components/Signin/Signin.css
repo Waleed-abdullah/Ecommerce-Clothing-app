@@ -1,5 +1,15 @@
-.Signin {
+body {
+  margin: 0;
+  min-height: 100vh;
+  background-image: url('./images/background.png');
+  background-size: cover;
+  color: #000;
+  font-family: sans-serif;
+  font-weight: 700;
   text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 h1 {
@@ -13,16 +23,34 @@ h1 {
   text-transform: uppercase;
 }
 
-.center {
+.imageContainer {
   display: flex;
   justify-content: center;
+  align-items: center;
+  object-fit: cover;
 }
 
-.particles {
-  position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  z-index: -1;
+.btn-grad {
+  background-image: linear-gradient(
+    to right,
+    #da22ff 0%,
+    #9733ee 51%,
+    #da22ff 100%
+  );
+}
+.btn-grad {
+  margin: 10px;
+  padding: 15px 45px;
+  text-align: center;
+  text-transform: uppercase;
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: white;
+  box-shadow: 0 0 20px #eee;
+  border-radius: 20px;
+}
+
+.btn-grad:hover {
+  background-position: right center; /* change the direction of the change here */
+  text-decoration: none;
 }
