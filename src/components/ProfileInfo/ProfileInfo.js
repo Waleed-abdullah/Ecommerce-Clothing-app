@@ -12,10 +12,12 @@ import Region from './Region';
 import SaveProfileButton from './SaveProfileButton';
 import Interests from './Interests'
 import { theme } from './Theme';
+import { useStateValue } from '../../State/StateProvider';
 
 
 const ProfileInfo = () => {
     const [name, setName] = useState('')
+    const [{ user }, dispatch] = useStateValue()
 
     const handleChangeInName = (event) => {
         console.log(event.target.value)
@@ -68,10 +70,12 @@ const ProfileInfo = () => {
                     </Typography>
                     <StyledTextField 
                         fullWidth 
+                        disabled
                         variant='outlined' 
                         type='email'
                         name='email'
-                        id='email-input'>
+                        id='email-input'
+                        defaultValue={user.email}>
                     </StyledTextField>
                     </Box>
 

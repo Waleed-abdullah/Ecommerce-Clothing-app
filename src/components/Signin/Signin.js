@@ -7,7 +7,7 @@ import { actionTypes } from '../../State/Reducer';
 import { Button } from '@mui/material';
 
 const Signin = () => {
-  const [{ user, testDetails }, dispatch] = useStateValue();
+  const [{ user }, dispatch] = useStateValue();
 
   // event handler for sign in button
   const signin = async () => {

@@ -118,16 +118,16 @@ const Interests = () => {
         </Typography>
 
         <Box sx={{bgcolor: "#ffffff", display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', width: "100%", borderRadius: "10px", boxShadow: 3}}>
-            <InterestsButton name='politics' handleClick={handleClick} interest={interests.politics}/>
-            <InterestsButton name='sports' handleClick={handleClick} interest={interests.sports}/>
-            <InterestsButton name='travel' handleClick={handleClick} interest={interests.travel}/>
-            <InterestsButton name='gaming' handleClick={handleClick} interest={interests.gaming}/>
-            <InterestsButton name='art' handleClick={handleClick} interest={interests.art}/>
-            <InterestsButton name='food' handleClick={handleClick} interest={interests.food}/>
-            <InterestsButton name='books' handleClick={handleClick} interest={interests.books}/>
-            <InterestsButton name='tech' handleClick={handleClick} interest={interests.tech}/>
-            <InterestsButton name='movies' handleClick={handleClick} interest={interests.movies}/>
-            <InterestsButton name='health' handleClick={handleClick} interest={interests.health}/>
+            <InterestsButton name='politics' displayName='politics' handleClick={handleClick} interest={interests.politics}/>
+            <InterestsButton name='sports' displayName='sports' handleClick={handleClick} interest={interests.sports}/>
+            <InterestsButton name='travel' displayName='travel' handleClick={handleClick} interest={interests.travel}/>
+            <InterestsButton name='gaming' displayName='gaming' handleClick={handleClick} interest={interests.gaming}/>
+            <InterestsButton name='art' displayName='art and design' handleClick={handleClick} interest={interests.art}/>
+            <InterestsButton name='food' displayName='food' handleClick={handleClick} interest={interests.food}/>
+            <InterestsButton name='books' displayName='books' handleClick={handleClick} interest={interests.books}/>
+            <InterestsButton name='tech' displayName='tech' handleClick={handleClick} interest={interests.tech}/>
+            <InterestsButton name='movies' displayName='movies and tv show' handleClick={handleClick} interest={interests.movies}/>
+            <InterestsButton name='health' displayName='health and fitness' handleClick={handleClick} interest={interests.health}/>
         </Box>
     </Box>
     )

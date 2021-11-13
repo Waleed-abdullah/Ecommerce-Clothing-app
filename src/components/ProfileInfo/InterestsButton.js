@@ -10,7 +10,7 @@ const useStyles = makeStyles({
     },
 }})
 
-const InterestsButton = ({name, handleClick, interest}) => {
+const InterestsButton = ({name, displayName, handleClick, interest}) => {
     const classes = useStyles()
 
     return (
@@ -19,7 +19,7 @@ const InterestsButton = ({name, handleClick, interest}) => {
         onClick={handleClick}
         variant="text"
         sx={{p: 1, m:2, bgcolor: `${interest ? "#804FC0" : "#FAF4FF"}`, borderRadius: "10px", color: `${interest ? "#FFFFFF": '#804FC0'}`}}>
-            {name}
+            {displayName}
         </Button>
     )
 }
