@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
 import { Typography } from '@mui/material';
+import InterestsButton from './InterestsButton';
 
 const Interests = () => {
     const [interests, setInterests] = useState({
@@ -117,85 +118,16 @@ const Interests = () => {
         </Typography>
 
         <Box sx={{bgcolor: "#ffffff", display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', width: "100%", borderRadius: "10px", boxShadow: 3}}>
-            <Button
-            name='sports'
-            onClick={handleClick}
-            variant="text"
-            sx={{p: 1, m:2, bgcolor: "#FAF4FF", borderRadius: "10px", color: '#804FC0'}}>
-                Sports
-            </Button>
-
-            <Button
-            name='politics'
-            onClick={handleClick}
-            variant="text"
-            sx={{p: 1, m:2, bgcolor: "#FAF4FF", borderRadius: "10px", color: '#804FC0'}}>
-                Politics
-            </Button>
-
-            <Button
-            name='travel'
-            onClick={handleClick}
-            variant="text"
-            sx={{p: 1, m:2, bgcolor: "#FAF4FF", borderRadius: "10px", color: '#804FC0'}}>
-                Travel
-            </Button>
-
-            <Button
-            name='gaming'
-            onClick={handleClick}
-            variant="text"
-            sx={{p: 1, m:2, bgcolor: "#FAF4FF", borderRadius: "10px", color: '#804FC0'}}>
-                Gaming
-            </Button>
-
-            <Button
-            name='art'
-            onClick={handleClick}
-            variant="text"
-            sx={{p: 1, m:2, bgcolor: "#FAF4FF", borderRadius: "10px", color: '#804FC0'}}>
-                Art
-            </Button>
-
-            <Button
-            name='food'
-            onClick={handleClick}
-            variant="text"
-            sx={{p: 1, m:2, bgcolor: "#FAF4FF", borderRadius: "10px", color: '#804FC0'}}>
-                Food
-            </Button>
-
-            <Button
-            name='books'
-            onClick={handleClick}
-            variant="text"
-            sx={{p: 1, m:2, bgcolor: "#FAF4FF", borderRadius: "10px", color: '#804FC0'}}>
-                Books
-            </Button>
-
-            <Button
-            name='tech'
-            onClick={handleClick}
-            variant="text"
-            sx={{p: 1, m:2, bgcolor: "#FAF4FF", borderRadius: "10px", color: '#804FC0'}}>
-                Tech
-            </Button>
-
-            <Button
-            name='movies'
-            onClick={handleClick}
-            variant="text"
-            sx={{p: 1, m:2, bgcolor: "#FAF4FF", borderRadius: "10px", color: '#804FC0'}}>
-                Movies and TV
-            </Button>
-
-            <Button
-            name='health'
-            onClick={handleClick}
-            variant="text"
-            sx={{p: 1, m:"auto", marginBottom: 1, bgcolor: "#FAF4FF", borderRadius: "10px", color: '#804FC0'}}>
-                Health and Fitness
-            </Button>
+            <InterestsButton name='politics' handleClick={handleClick} interest={interests.politics}/>
+            <InterestsButton name='sports' handleClick={handleClick} interest={interests.sports}/>
+            <InterestsButton name='travel' handleClick={handleClick} interest={interests.travel}/>
+            <InterestsButton name='gaming' handleClick={handleClick} interest={interests.gaming}/>
+            <InterestsButton name='art' handleClick={handleClick} interest={interests.art}/>
+            <InterestsButton name='food' handleClick={handleClick} interest={interests.food}/>
+            <InterestsButton name='books' handleClick={handleClick} interest={interests.books}/>
+            <InterestsButton name='tech' handleClick={handleClick} interest={interests.tech}/>
+            <InterestsButton name='movies' handleClick={handleClick} interest={interests.movies}/>
+            <InterestsButton name='health' handleClick={handleClick} interest={interests.health}/>
         </Box>
     </Box>
     )

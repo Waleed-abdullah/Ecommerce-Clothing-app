@@ -14,8 +14,6 @@ const Signin = () => {
     auth
       .signInWithPopup(provider)
       .then((result) => {
-        console.log(user);
-        console.log(testDetails);
         const temp = result.user.multiFactor.user;
 
         // sends data/state to the store
