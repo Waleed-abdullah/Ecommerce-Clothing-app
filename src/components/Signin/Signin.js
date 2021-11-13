@@ -32,7 +32,7 @@ const Signin = () => {
   };
 
   return (
-    <div>
+    <div className='body'>
       <div className="imageContainer">
         <Logo />
       </div>
