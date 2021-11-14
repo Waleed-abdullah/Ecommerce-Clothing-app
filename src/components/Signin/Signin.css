@@ -1,7 +1,7 @@
 .body {
   margin: 0;
   min-height: 100vh;
-  background-image: url('./images/background.png');
+  background-image: url('../../assets/SigninAssets/background.png');
   background-size: cover;
   color: #000;
   font-family: sans-serif;
@@ -28,29 +28,4 @@ h1 {
   justify-content: center;
   align-items: center;
   object-fit: cover;
-}
-
-.btn-grad {
-  background-image: linear-gradient(
-    to right,
-    #da22ff 0%,
-    #9733ee 51%,
-    #da22ff 100%
-  );
-}
-.btn-grad {
-  margin: 10px;
-  padding: 15px 45px;
-  text-align: center;
-  text-transform: uppercase;
-  transition: 0.5s;
-  background-size: 200% auto;
-  color: white;
-  box-shadow: 0 0 20px #eee;
-  border-radius: 20px;
-}
-
-.btn-grad:hover {
-  background-position: right center; /* change the direction of the change here */
-  text-decoration: none;
 }

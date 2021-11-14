@@ -4,7 +4,7 @@ import Logo from './Logo/Logo';
 import { auth, provider } from '../../firebase';
 import { useStateValue } from '../../State/StateProvider';
 import { actionTypes } from '../../State/Reducer';
-import { Button } from '@mui/material';
+import SignInButton from './SigninButton';
 
 const Signin = () => {
   const [{ user }, dispatch] = useStateValue();
@@ -30,22 +30,11 @@ const Signin = () => {
   };
 
   return (
-    <div className='body'>
+    <div className="body">
       <div className="imageContainer">
         <Logo />
       </div>
-      <Button
-        style={{
-          borderRadius: 20,
-          padding: '7px 18px',
-          backgroundImage:
-            'linear-gradient( to right,#da22ff 0%,#9733ee 51%, #da22ff 100% )',
-        }}
-        variant="contained"
-        onClick={signin}
-      >
-        Sign in
-      </Button>
+      <SignInButton onClick={signin}></SignInButton>
     </div>
   );
 };

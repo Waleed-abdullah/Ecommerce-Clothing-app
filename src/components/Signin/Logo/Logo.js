@@ -1,6 +1,6 @@
 import React from 'react';
 import Tilt from 'react-tilt';
-import explore from '../images/Explore Logo.png';
+import explore from '../../../assets/SigninAssets/ExploreLogo.png';
 
 const Logo = () => {
   return (

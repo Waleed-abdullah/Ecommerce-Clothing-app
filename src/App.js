@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import './App.css';
 import Signin from './components/Signin/Signin';
 import ProfileInfo from './components/ProfileInfo/ProfileInfo';
@@ -9,7 +9,7 @@ const App = () => {
   return (
     <div>
       <meta content="width=device-width, initial-scale=1" name="viewport" />
-      {!user ? (<Signin/>) : (<ProfileInfo/>)}
+      {!user ? <Signin /> : <ProfileInfo />}
     </div>
   );
 };
