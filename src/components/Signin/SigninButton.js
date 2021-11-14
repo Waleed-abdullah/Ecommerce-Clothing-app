@@ -10,7 +10,7 @@ const useStyles = makeStyles({
   },
 });
 
-const SignInButton = () => {
+const SignInButton = ({ handleClick }) => {
   const classes = useStyles();
 
   return (
@@ -19,6 +19,7 @@ const SignInButton = () => {
       variant="contained"
       size="large"
       sx={{ borderRadius: 20, boxShadow: 10 }}
+      onClick={handleClick}
     >
       Sign In
     </Button>

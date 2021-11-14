@@ -34,7 +34,7 @@ const Signin = () => {
       <div className="imageContainer">
         <Logo />
       </div>
-      <SignInButton onClick={signin}></SignInButton>
+      <SignInButton handleClick={signin}></SignInButton>
     </div>
   );
 };
