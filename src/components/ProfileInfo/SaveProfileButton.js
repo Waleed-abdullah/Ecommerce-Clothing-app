@@ -1,19 +1,21 @@
 import React from 'react'
-import Button from '@mui/material/Button';
 import { makeStyles } from '@material-ui/styles';
+import Button from '@mui/material/Button';
+
 
 const useStyles = makeStyles({
     button: {
       backgroundColor: '#804FC0',
       color: '#fff',
       '&:hover': {
-        backgroundColor: '#6c3da9',
+        backgroundColor: '#6c3da9 !important',
         color: '#fff',
     },
 }})
 
 const SaveProfileButton = () => {
     const classes = useStyles()
+    console.log(classes)
 
     return (
         <Button className={classes.button}
