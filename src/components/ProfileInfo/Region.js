@@ -11,8 +11,13 @@ const useStyles = makeStyles(theme => ({
     }
 }))
 
-const Region = () => {
+const Region = ({region, setRegion}) => {
     const classes = useStyles();
+
+    const handleRegionChange = (event) => {
+        console.log(event.target.value)
+        setRegion(event.target.value)
+    }
 
     return (
         <Box sx={{mt: 2}}>
@@ -28,7 +33,7 @@ const Region = () => {
         Region
         </Typography>
         <FormControl className={classes.formControl}>
-            <Select defaultValue={1}>
+            <Select defaultValue={1} onChange={handleRegionChange}>
                 <MenuItem value={1}>Pakistan</MenuItem>
                 <MenuItem value={2}>USA</MenuItem>
                 <MenuItem value={3}>India</MenuItem>

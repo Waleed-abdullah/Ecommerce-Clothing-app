@@ -16,6 +16,7 @@ import { useStateValue } from '../../State/StateProvider';
 
 const ProfileInfo = () => {
   const [name, setName] = useState('');
+  const [region, setRegion] = useState(1);
   const [{ user }, dispatch] = useStateValue();
 
   const handleChangeInName = (event) => {
@@ -80,7 +81,7 @@ const ProfileInfo = () => {
               ></StyledTextField>
             </Box>
 
-            <Region />
+            <Region region={region} setRegion={setRegion} />
 
             <Interests />
 

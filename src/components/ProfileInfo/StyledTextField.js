@@ -4,16 +4,16 @@ import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles(theme => ({
     root: {
-        borderRadius: '80px',
+        borderRadius: '10px',
         backgroundColor: "#FFFFFF",
-        height: '40px',
+        height: '100%',
     }
 }))
 
 const StyledTextField = (props) => {
     const classes = useStyles();
     return (
-      <TextField InputProps={{ classes, disableUnderline: true }} {...props} />
+      <TextField className={classes.root} {...props} />
     );
 }
 
