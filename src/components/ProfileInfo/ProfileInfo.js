@@ -13,16 +13,31 @@ import SaveProfileButton from './SaveProfileButton';
 import Interests from './Interests';
 import { theme } from './Theme';
 import { useStateValue } from '../../State/StateProvider';
+import { actionTypes } from '../../State/Reducer';
 
 const ProfileInfo = () => {
-  const [name, setName] = useState('');
-  const [region, setRegion] = useState(1);
   const [{ user }, dispatch] = useStateValue();
+  const [name, setName] = useState(user.name);
+  const [region, setRegion] = useState(1);
+  
 
   const handleChangeInName = (event) => {
     console.log(event.target.value);
     setName(event.target.value);
   };
+
+  const handleSubmit = (event) => {
+    event.preventDefault()
+    dispatch({
+      type: actionTypes.SET_USER,
+      user: {
+        ...user,
+        name: name,
+        region: region,
+      },
+    });
+    console.log('Submitted')
+  }
 
   return (
     <ThemeProvider theme={theme}>
@@ -32,7 +47,7 @@ const ProfileInfo = () => {
 
       <Container maxWidth="sm">
         <Box sx={{ height: '100vh', pt: 3 }}>
-          <form>
+          <form onSubmit={handleSubmit}>
             <Box>
               <Typography
                 variant="subtitle2"
@@ -47,6 +62,7 @@ const ProfileInfo = () => {
                 Name
               </Typography>
               <StyledTextField
+                required
                 fullWidth
                 variant="outlined"
                 type="text"
@@ -85,7 +101,7 @@ const ProfileInfo = () => {
 
             <Interests />
 
-            <SaveProfileButton />
+            <SaveProfileButton/>
           </form>
         </Box>
       </Container>

@@ -1,6 +1,7 @@
 import React from 'react'
 import { makeStyles } from '@material-ui/styles';
 import Button from '@mui/material/Button';
+import { useStateValue } from '../../State/StateProvider';
 
 
 const useStyles = makeStyles({
@@ -13,12 +14,19 @@ const useStyles = makeStyles({
     },
 }})
 
-const SaveProfileButton = () => {
+
+
+const SaveProfileButton = ({name, region}) => {
     const classes = useStyles()
-    console.log(classes)
+    const [{user}, dispatch] = useStateValue()
+
+    const handleClick = () => {
+        console.log(user)
+    }
 
     return (
         <Button className={classes.button}
+        type='submit'
         variant="text"
         size="large"
         sx={{bgcolor: "#804FC0", width:"100%", color:"#ffffff", mt:1, borderRadius: '15px', fontWeight: "bold", fontSize: "h6.fontSize", boxShadow: 10}}>

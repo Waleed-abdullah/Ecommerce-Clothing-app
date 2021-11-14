@@ -14,9 +14,11 @@ const useStyles = makeStyles(theme => ({
 const Region = ({region, setRegion}) => {
     const classes = useStyles();
 
+    const regions = ['Pakistan', 'USA', 'India', 'Iran']
+
     const handleRegionChange = (event) => {
         console.log(event.target.value)
-        setRegion(event.target.value)
+        setRegion(regions[event.target.value])
     }
 
     return (
@@ -33,11 +35,11 @@ const Region = ({region, setRegion}) => {
         Region
         </Typography>
         <FormControl className={classes.formControl}>
-            <Select defaultValue={1} onChange={handleRegionChange}>
-                <MenuItem value={1}>Pakistan</MenuItem>
-                <MenuItem value={2}>USA</MenuItem>
-                <MenuItem value={3}>India</MenuItem>
-                <MenuItem value={4}>Iran</MenuItem>
+            <Select defaultValue={0} onChange={handleRegionChange}>
+                <MenuItem value={0}>Pakistan</MenuItem>
+                <MenuItem value={1}>USA</MenuItem>
+                <MenuItem value={2}>India</MenuItem>
+                <MenuItem value={3}>Iran</MenuItem>
             </Select>
         </FormControl>
         </Box>
