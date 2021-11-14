@@ -7,15 +7,13 @@ import { actionTypes } from '../../State/Reducer';
 import { Button } from '@mui/material';
 
 const Signin = () => {
-  const [{ user, testDetails }, dispatch] = useStateValue();
+  const [{ user }, dispatch] = useStateValue();
 
   // event handler for sign in button
   const signin = async () => {
     auth
       .signInWithPopup(provider)
       .then((result) => {
-        console.log(user);
-        console.log(testDetails);
         const temp = result.user.multiFactor.user;
 
         // sends data/state to the store
@@ -32,7 +30,7 @@ const Signin = () => {
   };
 
   return (
-    <div>
+    <div className='body'>
       <div className="imageContainer">
         <Logo />
       </div>
