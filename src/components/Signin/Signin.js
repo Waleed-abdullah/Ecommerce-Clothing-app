@@ -15,6 +15,7 @@ const Signin = () => {
       .signInWithPopup(provider)
       .then((result) => {
         const temp = result.user.multiFactor.user;
+        console.log(temp)
 
         // sends data/state to the store
         dispatch({
@@ -23,6 +24,8 @@ const Signin = () => {
             uid: temp.uid,
             name: temp.displayName,
             email: temp.email,
+            region: null,
+            interests: [],
           },
         });
       })
