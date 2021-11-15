@@ -19,101 +19,20 @@ const Interests = () => {
     health: false,
   });
 
-  const[{user}, dispatch] = useStateValue();
+  const [{ user }, dispatch] = useStateValue();
 
   const handleClick = (event) => {
-    console.log(event.target.getAttribute('name'));
     const interest = event.target.getAttribute('name');
-    if (interest === 'sports') {
-      !interests.sports ? addInterestsToUser('sports') : removeInterestsFromUser('sports')
-      const tempInterests = {
-        ...interests,
-        sports: !interests.sports,
-      };
-      console.log(tempInterests);
-      setInterests(tempInterests);
-    } 
-    else if (interest === 'politics') {
-      !interests.politics ? addInterestsToUser('politics') : removeInterestsFromUser('politics')
-      const tempInterests = {
-        ...interests,
-        politics: !interests.politics,
-      };
-      console.log(tempInterests);
-      setInterests(tempInterests);
-    } 
-    else if (interest === 'travel') {
-      !interests.travel ? addInterestsToUser('travel') : removeInterestsFromUser('travel')
-      const tempInterests = {
-        ...interests,
-        travel: !interests.travel,
-      };
-      console.log(tempInterests);
-      setInterests(tempInterests);
-    } 
-    else if (interest === 'gaming') {
-      !interests.gaming ? addInterestsToUser('gaming') : removeInterestsFromUser('gaming')
-      const tempInterests = {
-        ...interests,
-        gaming: !interests.gaming,
-      };
-      console.log(tempInterests);
-      setInterests(tempInterests);
-    } 
-    else if (interest === 'art') {
-      !interests.art ? addInterestsToUser('art') : removeInterestsFromUser('art')
-      const tempInterests = {
-        ...interests,
-        art: !interests.art,
-      };
-      console.log(tempInterests);
-      setInterests(tempInterests);
-    } 
-    else if (interest === 'food') {
-      !interests.food ? addInterestsToUser('food') : removeInterestsFromUser('food')
-      const tempInterests = {
-        ...interests,
-        food: !interests.food,
-      };
-      console.log(tempInterests);
-      setInterests(tempInterests);
-    } 
-    else if (interest === 'books') {
-      !interests.books ? addInterestsToUser('books') : removeInterestsFromUser('books')
-      const tempInterests = {
-        ...interests,
-        books: !interests.books,
-      };
-      console.log(tempInterests);
-      setInterests(tempInterests);
-    } 
-    else if (interest === 'tech') {
-      !interests.tech ? addInterestsToUser('tech') : removeInterestsFromUser('tech')
-      const tempInterests = {
-        ...interests,
-        tech: !interests.tech,
-      };
-      console.log(tempInterests);
-      setInterests(tempInterests);
-    } 
-    else if (interest === 'movies') {
-      !interests.movies ? addInterestsToUser('movies') : removeInterestsFromUser('movies')
-      const tempInterests = {
-        ...interests,
-        movies: !interests.movies,
-      };
-      console.log(tempInterests);
-      setInterests(tempInterests);
-    } 
-    else if (interest === 'health') {
-      !interests.health ? addInterestsToUser('health') : removeInterestsFromUser('health')
-      const tempInterests = {
-        ...interests,
-        health: !interests.health,
-      };
-      console.log(tempInterests);
-      setInterests(tempInterests);
-    }
+
+    !interests[interest]
+      ? addInterestsToUser(interest)
+      : removeInterestsFromUser(interest);
+
+    const tempInterests = {
+      ...interests,
+      [interest]: !interests[interest],
+    };
+    setInterests(tempInterests);
   };
 
   const addInterestsToUser = (value) => {
@@ -124,17 +43,17 @@ const Interests = () => {
         interests: user.interests.concat(value),
       },
     });
-  }
+  };
 
   const removeInterestsFromUser = (value) => {
     dispatch({
       type: actionTypes.SET_USER,
       user: {
         ...user,
-        interests: user.interests.find(interest => interest !== value),
+        interests: user.interests.find((interest) => interest !== value),
       },
     });
-  }
+  };
 
   return (
     <Box sx={{ mt: 2 }}>

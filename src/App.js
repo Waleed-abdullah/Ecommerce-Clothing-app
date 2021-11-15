@@ -8,13 +8,11 @@ const App = () => {
   const [{ user }, dispatch] = useStateValue();
   return (
     <React.Fragment>
-    <MetaTags>
-      <meta content="width=device-width, initial-scale=1" name="viewport" />
-    </MetaTags>
-    
-    <div>
-      {!user ? <Signin /> : <ProfileInfo />}
-    </div>
+      <MetaTags>
+        <meta content="width=device-width, initial-scale=1" name="viewport" />
+      </MetaTags>
+
+      <div>{!user ? <Signin /> : <ProfileInfo />}</div>
     </React.Fragment>
   );
 };

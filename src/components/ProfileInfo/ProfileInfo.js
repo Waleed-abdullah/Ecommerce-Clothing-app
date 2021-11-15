@@ -19,7 +19,6 @@ const ProfileInfo = () => {
   const [{ user }, dispatch] = useStateValue();
   const [name, setName] = useState(user.name);
   const [region, setRegion] = useState(1);
-  
 
   const handleChangeInName = (event) => {
     console.log(event.target.value);
@@ -27,7 +26,7 @@ const ProfileInfo = () => {
   };
 
   const handleSubmit = (event) => {
-    event.preventDefault()
+    event.preventDefault();
     dispatch({
       type: actionTypes.SET_USER,
       user: {
@@ -36,8 +35,8 @@ const ProfileInfo = () => {
         region: region,
       },
     });
-    console.log('Submitted')
-  }
+    console.log('Submitted');
+  };
 
   return (
     <ThemeProvider theme={theme}>
@@ -101,7 +100,7 @@ const ProfileInfo = () => {
 
             <Interests />
 
-            <SaveProfileButton/>
+            <SaveProfileButton />
           </form>
         </Box>
       </Container>
