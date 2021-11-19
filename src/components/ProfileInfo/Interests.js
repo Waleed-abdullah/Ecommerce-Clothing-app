@@ -50,7 +50,7 @@ const Interests = () => {
       type: actionTypes.SET_USER,
       user: {
         ...user,
-        interests: user.interests.find((interest) => interest !== value),
+        interests: user.interests.filter((interest) => interest !== value),
       },
     });
   };

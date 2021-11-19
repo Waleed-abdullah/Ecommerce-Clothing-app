@@ -2,6 +2,7 @@ import React from 'react';
 import { makeStyles } from '@material-ui/styles';
 import Button from '@mui/material/Button';
 import { useStateValue } from '../../State/StateProvider';
+import axios from 'axios';
 
 const useStyles = makeStyles({
   button: {
@@ -19,8 +20,20 @@ const SaveProfileButton = ({ name, region }) => {
   //eslint-disable-next-line
   const [{ user }, dispatch] = useStateValue();
 
+  //will be used to send data to the api
   const handleClick = () => {
-    console.log(user);
+    axios({
+      method: 'post',
+      url: 'http://localhost:5000/saveProfile',
+      data: user,
+    })
+      .then((res) => res.data)
+      .then((userID) => {
+        if (userID) {
+          //if user then change the route to saveProfile
+          console.log(userID);
+        }
+      });
   };
 
   return (
