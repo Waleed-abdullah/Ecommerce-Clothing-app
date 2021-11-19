@@ -5,6 +5,7 @@ import { useStateValue } from './State/StateProvider';
 import MetaTags from 'react-meta-tags';
 
 const App = () => {
+  //eslint-disable-next-line
   const [{ user }, dispatch] = useStateValue();
   return (
     <React.Fragment>
