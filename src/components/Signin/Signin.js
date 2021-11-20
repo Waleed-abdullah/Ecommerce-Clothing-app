@@ -48,7 +48,7 @@ const Signin = () => {
       <div className="imageContainer">
         <Logo />
       </div>
-      <SignInButton handleClick={signin}></SignInButton>
+      <SignInButton handleClick={signin}/>
     </div>
   );
 };
