@@ -6,10 +6,13 @@ import { useStateValue } from '../../State/StateProvider';
 import { actionTypes } from '../../State/Reducer';
 import SignInButton from './SigninButton';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom'
 
 const Signin = () => {
   //eslint-disable-next-line
   const [{ user }, dispatch] = useStateValue();
+
+  let history = useNavigate()
 
   // event handler for sign in button
   const signin = async () => {
@@ -36,12 +39,14 @@ const Signin = () => {
 
         //call the api
         apiCall(tempUser);
+
+        
+
       })
       .catch((error) => console.log(error.message));
   };
 
   //api call to server
-
   const apiCall = (userData) => {
     axios({
       method: 'post',
@@ -50,11 +55,14 @@ const Signin = () => {
         ...userData,
       },
     })
-      .then((res) => res.data)
-      .then((user) => {
-        if (user) {
-          //if user then change the route to saveProfile
-          console.log(user);
+      .then((res) => {
+        console.log(res.data)
+        if (res.data) {
+          history('/homePage')
+        }
+        else {
+          console.log("User does not exist")
+          history('/profileInfo')
         }
       });
   };

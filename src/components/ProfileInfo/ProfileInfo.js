@@ -15,10 +15,14 @@ import { theme } from './Theme';
 import { useStateValue } from '../../State/StateProvider';
 import { actionTypes } from '../../State/Reducer';
 
+import { useNavigate } from 'react-router-dom'
+import axios from 'axios';
+
 const ProfileInfo = () => {
   const [{ user }, dispatch] = useStateValue();
   const [name, setName] = useState(user.name);
-  const [region, setRegion] = useState(1);
+  const [region, setRegion] = useState('Pakistan');
+  let history = useNavigate()
 
   const handleChangeInName = (event) => {
     console.log(event.target.value);
@@ -27,15 +31,38 @@ const ProfileInfo = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+
+    const tempUser = {
+      ...user,
+      name: name,
+      region: region,
+    }
+
+    console.log(tempUser)
+
     dispatch({
       type: actionTypes.SET_USER,
       user: {
-        ...user,
-        name: name,
-        region: region,
+        ...tempUser
       },
     });
+
+    axios({
+      method: 'post',
+      url: 'http://localhost:5000/saveProfile',
+      data: tempUser,
+    })
+      .then((res) => res.data)
+      .then((userID) => {
+        if (userID) {
+          //if user then change the route to saveProfile
+          console.log(userID);
+        }
+      });
+
+    history('/homePage')
     console.log('Submitted');
+
   };
 
   return (
