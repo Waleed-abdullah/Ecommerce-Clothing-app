@@ -1,8 +1,6 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/styles';
 import Button from '@mui/material/Button';
-import { useStateValue } from '../../State/StateProvider';
-import axios from 'axios';
 
 const useStyles = makeStyles({
   button: {

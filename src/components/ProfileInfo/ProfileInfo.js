@@ -16,7 +16,7 @@ import { useStateValue } from '../../State/StateProvider';
 import { actionTypes } from '../../State/Reducer';
 
 import { useNavigate } from 'react-router-dom'
-import axios from 'axios';
+import { saveProfileInfo } from '../../Controllers/apiCalls';
 
 const ProfileInfo = () => {
   const [{ user }, dispatch] = useStateValue();
@@ -47,22 +47,10 @@ const ProfileInfo = () => {
       },
     });
 
-    axios({
-      method: 'post',
-      url: 'http://localhost:5000/saveProfile',
-      data: tempUser,
-    })
-      .then((res) => res.data)
-      .then((userID) => {
-        if (userID) {
-          //if user then change the route to saveProfile
-          console.log(userID);
-        }
-      });
+    saveProfileInfo(tempUser)
 
     history('/homePage')
     console.log('Submitted');
-
   };
 
   return (
