@@ -5,11 +5,14 @@ import { auth, provider } from '../../firebase';
 import { useStateValue } from '../../State/StateProvider';
 import { actionTypes } from '../../State/Reducer';
 import SignInButton from './SigninButton';
-import axios from 'axios';
+import { useNavigate } from 'react-router-dom'
+import { checkIfUserExists } from '../../Controllers/apiCalls';
 
 const Signin = () => {
   //eslint-disable-next-line
   const [{ user }, dispatch] = useStateValue();
+
+  let history = useNavigate()
 
   // event handler for sign in button
   const signin = async () => {
@@ -35,28 +38,9 @@ const Signin = () => {
         });
 
         //call the api
-        apiCall(tempUser);
+        checkIfUserExists(tempUser, history);
       })
       .catch((error) => console.log(error.message));
-  };
-
-  //api call to server
-
-  const apiCall = (userData) => {
-    axios({
-      method: 'post',
-      url: 'http://localhost:5000/signin',
-      data: {
-        ...userData,
-      },
-    })
-      .then((res) => res.data)
-      .then((user) => {
-        if (user) {
-          //if user then change the route to saveProfile
-          console.log(user);
-        }
-      });
   };
 
   return (
@@ -64,7 +48,7 @@ const Signin = () => {
       <div className="imageContainer">
         <Logo />
       </div>
-      <SignInButton handleClick={signin}></SignInButton>
+      <SignInButton handleClick={signin}/>
     </div>
   );
 };

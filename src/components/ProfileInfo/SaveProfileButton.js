@@ -1,8 +1,6 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/styles';
 import Button from '@mui/material/Button';
-import { useStateValue } from '../../State/StateProvider';
-import axios from 'axios';
 
 const useStyles = makeStyles({
   button: {
@@ -17,30 +15,11 @@ const useStyles = makeStyles({
 
 const SaveProfileButton = ({ name, region }) => {
   const classes = useStyles();
-  //eslint-disable-next-line
-  const [{ user }, dispatch] = useStateValue();
-
-  //will be used to send data to the api
-  const handleClick = () => {
-    axios({
-      method: 'post',
-      url: 'http://localhost:5000/saveProfile',
-      data: user,
-    })
-      .then((res) => res.data)
-      .then((userID) => {
-        if (userID) {
-          //if user then change the route to saveProfile
-          console.log(userID);
-        }
-      });
-  };
 
   return (
     <Button
       className={classes.button}
       type="submit"
-      onClick={handleClick}
       variant="text"
       size="large"
       sx={{

@@ -15,10 +15,14 @@ import { theme } from './Theme';
 import { useStateValue } from '../../State/StateProvider';
 import { actionTypes } from '../../State/Reducer';
 
+import { useNavigate } from 'react-router-dom'
+import { saveProfileInfo } from '../../Controllers/apiCalls';
+
 const ProfileInfo = () => {
   const [{ user }, dispatch] = useStateValue();
   const [name, setName] = useState(user.name);
-  const [region, setRegion] = useState(1);
+  const [region, setRegion] = useState('Pakistan');
+  let history = useNavigate()
 
   const handleChangeInName = (event) => {
     console.log(event.target.value);
@@ -27,14 +31,25 @@ const ProfileInfo = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+
+    const tempUser = {
+      ...user,
+      name: name,
+      region: region,
+    }
+
+    console.log(tempUser)
+
     dispatch({
       type: actionTypes.SET_USER,
       user: {
-        ...user,
-        name: name,
-        region: region,
+        ...tempUser
       },
     });
+
+    saveProfileInfo(tempUser)
+
+    history('/homePage')
     console.log('Submitted');
   };
 
