@@ -24,7 +24,7 @@ const checkIfUserExists = (userData, history) => {
 const saveProfileInfo = (userData) => {
     axios({
         method: 'post',
-        url: 'http://localhost:5000/saveProfile',
+        url: `${baseURL}/saveProfile`,
         data: userData,
       })
         .then((res) => {
