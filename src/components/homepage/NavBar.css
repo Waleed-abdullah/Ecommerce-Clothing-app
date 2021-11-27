@@ -1,0 +1,9 @@
+@media screen and (max-width: 900px) {
+    .searchContainer {
+        width: 50% !important;
+    }
+
+    .searchBar {
+        width: 45vh !important;
+    }
+}

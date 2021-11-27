@@ -1,0 +1,9 @@
+@media screen and (max-width: 900px) {
+    .homeLogo {
+        width: 25vh;
+    }
+
+    .container {
+        margin-left: 1;
+    }
+}
