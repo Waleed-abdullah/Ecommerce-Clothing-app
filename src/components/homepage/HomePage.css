@@ -1,0 +1,35 @@
+@media screen and (max-width: 900px) {
+    .sidebar{
+        display: none;
+    }
+    .multi{
+        display: none;
+    }
+    .main{
+        justify-content: center !important;
+        padding-top: 12% !important;
+    }
+}
+
+.main{
+    display: flex;
+    justify-content: space-between;
+}
+
+.sidebar{
+    margin-top: 4.8%;
+    background-color: green;
+    height: 100%;
+}
+
+.posts{
+    margin-top: 5%;
+    margin-left: 5vh;
+    margin-right: 5vh;
+}
+
+.multi{
+    margin-top: 7%;
+    background-color: green;
+    height: 100%;
+}

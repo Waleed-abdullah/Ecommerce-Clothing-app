@@ -8,7 +8,7 @@ import SearchBar from "material-ui-search-bar";
 const NavBar = () => {
   return (
     <Box sx={{width: '100%'}}>
-      <AppBar position="static" sx={{bgcolor: '#ffffff'}}>
+      <AppBar position="fixed" sx={{bgcolor: '#ffffff'}}>
         <Box sx={{display: 'flex', justifyContent: 'space-around', alignItems: 'center'}}>
           <Logo/>
 
@@ -23,16 +23,3 @@ const NavBar = () => {
 };
 
 export default NavBar
-
-/*
-            <StyledSearchField
-                fullWidth
-                size='small'
-                variant="outlined"
-                type="text"
-                name="search"
-                id="search-input"
-                placeholder='Search'>
-            </StyledSearchField>
-            <SearchIcon color='primary'></SearchIcon>
-*/

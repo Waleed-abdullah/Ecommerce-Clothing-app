@@ -1,0 +1,95 @@
+@media screen and (max-width: 900px) {
+    .postContainer{
+        width: 400px;
+        margin-top: 1vh !important;
+    }
+    .postImage{
+        width: 400px;
+    }
+}
+
+.commentButton:hover{
+    background-color: #6c3da9;
+}
+
+.postContainer{
+    background-color: #FFFFFF;
+    padding-left: 4vh;
+    padding-right: 4vh;
+    padding-top: 4vh;
+    border-radius: 20px;
+    margin-top: 5vh;
+    margin-bottom: 7vh;
+    filter: drop-shadow(0 4px 4px rgba(0, 0, 0, 0.25));
+}
+
+.upperArea{
+    display: flex;
+    justify-content: space-around;
+}
+
+.nameImageTime{
+    display: flex;
+    padding-right: 4;
+}
+
+.profilePic{
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+.postImage{
+    border-radius: 8px;
+}
+
+.postImageContainer{
+    border-radius: 8px;
+    padding-bottom: 3vh;
+}
+
+.postTextContainer{
+    margin-bottom: 2vh;
+    margin-top: 2vh;
+    max-width: 100%;
+}
+
+.postText{
+    text-align: left;
+    word-wrap: break-word;
+}
+
+.cLContainer{
+    width: 100%;
+    display: flex;
+    justify-content: start;
+    padding-bottom: 2.5vh;
+}
+
+.commentField{
+    width: 100%;
+    margin-left: 2vh;
+    background-color: #F8F2FF;
+    border: none;
+    border-radius: 15px;
+    padding-left: 1vh;
+}
+
+.commentButtonContainer{
+    padding-bottom: 2.5vh;
+    display: flex;
+    justify-content: end;
+}
+
+.commentButton{
+    background-color: #804FC0;
+    color: #FFFFFF;
+    border-radius: 15px;
+    font-size: 2.2vh;
+    padding-top: 1vh;
+    padding-bottom: 1vh;
+    padding-left: 1.5vh;
+    padding-right: 1.5vh;
+    border: none;
+}

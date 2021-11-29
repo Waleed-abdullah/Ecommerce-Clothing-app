@@ -1,9 +1,11 @@
 import axios from 'axios';
+import { actionTypes } from '../State/Reducer';
 
 const baseURL = 'http://localhost:5000'
 
-const checkIfUserExists = (userData, history) => {
-    axios({
+
+const checkIfUserExists = (userData, history, dispatch) => {  
+  axios({
         method: 'post',
         url: `${baseURL}/signin`,
         data: {
