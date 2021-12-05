@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import Navbar from './NavBar';
 import Post from './Post';
 import SideBar from './SideBar';
+import MultiPurpose from './MultiPurpose';
 import './HomePage.css'
 import { useNavigate } from 'react-router-dom'
 import { useStateValue } from '../../State/StateProvider';
@@ -31,7 +32,9 @@ const HomePage = () => {
       <div className='main'>
         <div className='sidebar'><SideBar/></div>
         <div className='posts'>{postArr}</div>
-        <div className='multi'>Multitttttttttttttttttttttttttttt</div>
+        <div className='multi'>
+          <MultiPurpose/>
+        </div>
       </div>
       </div>
       </React.Fragment>
