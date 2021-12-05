@@ -1,6 +1,5 @@
 export const initialState = {
     user: null,
-    redirectTo: '/signIn'
 }
 
 export const actionTypes = {

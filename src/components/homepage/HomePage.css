@@ -1,0 +1,46 @@
+@media screen and (max-width: 900px) {
+    .sidebar{
+        display: none;
+    }
+    .multi{
+        display: none;
+    }
+    .main{
+        justify-content: center !important;
+        padding-top: 12% !important;
+    }
+}
+
+.main{
+    display: flex;
+    justify-content: space-between;
+}
+
+.sidebar{
+    position: fixed;
+    top: 0;
+    margin-top: 4%;
+    padding-top: 2%;
+    padding-left: 1%;
+    padding-right: 2%;
+    background-color:white;
+    height: 100vh;
+    
+}
+
+.posts{
+    margin-top: 5%;
+    margin-left: 30%;
+    margin-right: 5%;
+}
+
+.multi{
+    position: fixed;
+    top: 0;
+    right: 2%;
+    margin-top: 7%;
+    margin-right: 2%;
+    background-color: aquamarine;
+    height: 80%;
+    width: 20%;
+}

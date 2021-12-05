@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import { ThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -20,9 +20,13 @@ import { saveProfileInfo } from '../../Controllers/apiCalls';
 
 const ProfileInfo = () => {
   const [{ user }, dispatch] = useStateValue();
-  const [name, setName] = useState(user.name);
+  const [name, setName] = useState(user?.name);
   const [region, setRegion] = useState('Pakistan');
   let history = useNavigate()
+
+  useEffect(() => {
+    user ? history('/profileInfo') : history('/')
+  }, [user])
 
   const handleChangeInName = (event) => {
     console.log(event.target.value);
@@ -45,6 +49,11 @@ const ProfileInfo = () => {
       user: {
         ...tempUser
       },
+    });
+
+    dispatch({
+      type: actionTypes.SET_AUTHENTICATED,
+      authenticated: true,
     });
 
     saveProfileInfo(tempUser)
@@ -107,7 +116,7 @@ const ProfileInfo = () => {
                 type="email"
                 name="email"
                 id="email-input"
-                defaultValue={user.email}
+                defaultValue={user?.email}
               ></StyledTextField>
             </Box>
 
