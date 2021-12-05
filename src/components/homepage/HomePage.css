@@ -17,19 +17,30 @@
 }
 
 .sidebar{
-    margin-top: 4.8%;
-    background-color: green;
-    height: 100%;
+    position: fixed;
+    top: 0;
+    margin-top: 4%;
+    padding-top: 2%;
+    padding-left: 1%;
+    padding-right: 2%;
+    background-color:white;
+    height: 100vh;
+    
 }
 
 .posts{
     margin-top: 5%;
-    margin-left: 5vh;
-    margin-right: 5vh;
+    margin-left: 30%;
+    margin-right: 5%;
 }
 
 .multi{
+    position: fixed;
+    top: 0;
+    right: 2%;
     margin-top: 7%;
-    background-color: green;
-    height: 100%;
+    margin-right: 2%;
+    background-color: aquamarine;
+    height: 80%;
+    width: 20%;
 }
