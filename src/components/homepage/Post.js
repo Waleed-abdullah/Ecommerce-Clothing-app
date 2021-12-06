@@ -1,5 +1,4 @@
 import React from 'react'
-import { Box } from '@mui/system'
 import Profile from '../../assets/HomeAssets/unnamed.png'
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 import FavoriteIcon from '@mui/icons-material/Favorite';

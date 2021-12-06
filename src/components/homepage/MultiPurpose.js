@@ -1,38 +1,15 @@
 import React from 'react'
 import { Routes, Route, BrowserRouter as Router } from 'react-router-dom';
-import NewPost from './NewPost';
+import NewPost from './NewPost.js';
 
 const MultiPurpose = () => {
-
-    const comp = 'newPost'
-
-    if (comp === 'newPost'){
-        return (
-            <React.Fragment>
-                <NewPost/>
-            </React.Fragment>
-        )
-    }
-    else if (comp === 'notifications'){
-        return (
-            <React.Fragment>
-                Notifications
-            </React.Fragment>
-        )
-    }
-    else if (comp === 'messages'){
-        return (
-            <React.Fragment>
-                Messages
-            </React.Fragment>
-        )
-    }
-    else if (comp === 'profile'){
-        return (
-            <React.Fragment>
-                Profile
-            </React.Fragment>
-        )
-    }
+    return(
+        <React.Fragment>
+        <Routes>
+          <Route path="/" element={<NewPost/>} />
+          <Route path="/notifications" element={<div>Notifications</div>} />
+        </Routes>
+        </React.Fragment>
+    )
 }
 export default MultiPurpose

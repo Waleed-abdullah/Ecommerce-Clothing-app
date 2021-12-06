@@ -5,14 +5,11 @@ import { auth, provider } from '../../firebase';
 import { useStateValue } from '../../State/StateProvider';
 import { actionTypes } from '../../State/Reducer';
 import SignInButton from './SigninButton';
-import { useNavigate } from 'react-router-dom'
 import { checkIfUserExists } from '../../Controllers/apiCalls';
 
-const Signin = () => {
+const Signin = ({goToProfile, setGoToProfile}) => {
   //eslint-disable-next-line
   const [{ user }, dispatch] = useStateValue();
-
-  let history = useNavigate()
 
   // event handler for sign in button
   const signin = async () => {
@@ -38,7 +35,7 @@ const Signin = () => {
         });
 
         //call the api
-        checkIfUserExists(tempUser, history);
+        checkIfUserExists(tempUser, dispatch, setGoToProfile);
       })
       .catch((error) => console.log(error.message));
   };
