@@ -22,11 +22,6 @@ const ProfileInfo = () => {
   const [{ user }, dispatch] = useStateValue();
   const [name, setName] = useState(user?.name);
   const [region, setRegion] = useState('Pakistan');
-  let history = useNavigate()
-
-  useEffect(() => {
-    user ? history('/profileInfo') : history('/')
-  }, [user])
 
   const handleChangeInName = (event) => {
     console.log(event.target.value);
@@ -51,14 +46,9 @@ const ProfileInfo = () => {
       },
     });
 
-    dispatch({
-      type: actionTypes.SET_AUTHENTICATED,
-      authenticated: true,
-    });
 
-    saveProfileInfo(tempUser)
+    saveProfileInfo(tempUser, dispatch)
 
-    history('/homePage')
     console.log('Submitted');
   };
 

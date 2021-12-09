@@ -2,19 +2,16 @@ import React, { useEffect } from 'react'
 import Navbar from './NavBar';
 import Post from './Post';
 import SideBar from './SideBar';
+import MultiPurpose from './MultiPurpose';
+import NewPost from './NewPost';
 import './HomePage.css'
 import { useNavigate } from 'react-router-dom'
 import { useStateValue } from '../../State/StateProvider';
 import { useState } from 'react';
+import { Routes, Route, BrowserRouter as Router, Switch } from 'react-router-dom';
 
 const HomePage = () => {
-  const [{ user }] = useStateValue()
-  const history = useNavigate()
   const [postArr, setPostArr] = useState([]);
-
-  useEffect(() => {
-    user ? history('/homePage') : history('/')
-  },[user])
 
   useEffect(() => {
     let posts = [...postArr];
@@ -31,7 +28,9 @@ const HomePage = () => {
       <div className='main'>
         <div className='sidebar'><SideBar/></div>
         <div className='posts'>{postArr}</div>
-        <div className='multi'>Multitttttttttttttttttttttttttttt</div>
+        <div className='multi'>
+        <MultiPurpose/>
+        </div>
       </div>
       </div>
       </React.Fragment>
@@ -39,11 +38,3 @@ const HomePage = () => {
 };
 
 export default HomePage;
-
-/*
-.sidebar{
-    margin-top: 4.8%;
-    background-color: white;
-    height: 100%;
-}
-*/
