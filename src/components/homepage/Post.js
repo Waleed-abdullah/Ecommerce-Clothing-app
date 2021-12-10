@@ -23,7 +23,7 @@ const Post = () => {
             </div>
 
             <div className='postImageContainer'>
-                <img className='postImage' src={Temp} width='500px' alt='postImage'></img>
+                <img className='postImage' src={`http://localhost:5000/retrieve/file-1639155511841.png`} width='500px' alt='postImage'></img>
             </div>
 
             <div className='cLContainer'>
