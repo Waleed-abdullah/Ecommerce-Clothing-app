@@ -5,13 +5,13 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import Temp from '../../assets/HomeAssets/temp.jpg'
 import './Post.css'
 
-const Post = () => {
+const Post = ({post}) => {
     return (
         <div className='postContainer'>
             <div className='upperArea'>
                 <div className='nameImageTime'>
                     <img className='profilePic' src={Profile} alt="pfp"></img>
-                    <h4 style={{paddingLeft: 5, color: "#4E4E4E"}}>Nouman Amir <span style={{fontSize: '10px'}}><em>posted at {(new Date()).toUTCString()}</em></span></h4>
+                    <h4 style={{paddingLeft: 5, color: "#4E4E4E"}}>{post.name} <span style={{fontSize: '10px'}}><em>posted at {(new Date()).toUTCString()}</em></span></h4>
                 </div>
                 <div>
                     <MoreHorizIcon fontSize='large'></MoreHorizIcon>
@@ -19,11 +19,11 @@ const Post = () => {
             </div>
 
             <div className='postTextContainer'>
-                <p className='postText'>Hello</p>
+                <p className='postText'>{post.postText}</p>
             </div>
 
             <div className='postImageContainer'>
-                <img className='postImage' src={`http://localhost:5000/retrieve/file-1639155511841.png`} width='500px' alt='postImage'></img>
+                <img className='postImage' src={`http://localhost:5000/retrieve/${post.postImage}`} width='500px' alt='postImage'></img>
             </div>
 
             <div className='cLContainer'>

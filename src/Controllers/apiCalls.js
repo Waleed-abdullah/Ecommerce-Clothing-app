@@ -45,7 +45,49 @@ const saveProfileInfo = (userData, dispatch) => {
         });
 }
 
+const savePost = async (postImage, postText, user, posts, setPosts) => {
+    let postID;
+    const imgForm = new FormData()
+    imgForm.append('file', postImage)
+    imgForm.append('fileName', postImage.name)
+
+    try {
+        const resData = await axios.post(
+          "http://localhost:5000/upload/postImage",
+          imgForm
+        );
+        console.log(resData.data);
+
+        await axios({
+            method: 'post',
+            url: `http://localhost:5000/upload/post`,
+            data: {
+            userID: user.uid,
+            postText: postText,
+            postImage: resData.data
+            },
+        })
+        .then(res => {
+            console.log("Saved Post in Database")
+            postID = res.data.postID
+            setPosts(posts.concat({
+              name: user.name,
+              postID: res.data.postID,
+              userID: user.uid,
+              postText: postText,
+              postImage: resData.data
+            }))
+        })
+    } 
+    catch (e) {
+        console.log(e);
+    }
+
+    return postID
+}
+
 export {
     checkIfUserExists,
     saveProfileInfo,
+    savePost,
 }

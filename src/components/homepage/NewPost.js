@@ -1,10 +1,13 @@
 import React, {useState} from 'react'
 import './NewPost.css'
 import axios from 'axios';
+import { useStateValue } from '../../State/StateProvider';
+import { savePost } from '../../Controllers/apiCalls';
 
-const NewPost = () => {
+const NewPost = ({posts, setPosts}) => {
     const [postText, setPostText] = useState("");
-    const [postImg, setPostImg] = useState(null);
+    const [postImage, setPostImage] = useState(null);
+    const [{ user }, dispatch] = useStateValue()
 
     const handlePostText = (event) => {
         setPostText(event.target.value)
@@ -13,7 +16,7 @@ const NewPost = () => {
     const handlePostImage = (event) => {
         console.log('Entered handlePostImage')
         if (event.target.files[0]){
-            setPostImg(event.target.files[0])
+            setPostImage(event.target.files[0])
             console.log(event.target.files[0])
         }
     }
@@ -22,25 +25,13 @@ const NewPost = () => {
         event.preventDefault()
         console.log('Entered Submit')
         
-        if (postImg){
-            const imgForm = new FormData()
-            imgForm.append('file', postImg)
-            imgForm.append('fileName', postImg.name)
-
-            try {
-                const res = await axios.post(
-                  "http://localhost:5000/upload",
-                  imgForm
-                );
-                console.log(res);
-            } 
-            catch (e) {
-                console.log(e);
-            }
+        if (postImage){
+            savePost(postImage, postText, user, posts, setPosts)
         }
 
-        setPostImg(null)
-        event.target.postImg.value = null
+        setPostImage(null)
+        setPostText('')
+        event.target.postImage.value = null
     }
 
         return (
@@ -48,7 +39,7 @@ const NewPost = () => {
             <h4 id='h4'>Create New Post</h4>
             <form onSubmit={handleSubmit}>
                 <input value={postText} className='postTextField' type='text' placeholder="What's is on your mind?" onChange={handlePostText}></input>
-                <input name='postImg' className='fileField' type='file' onChange={handlePostImage}></input>
+                <input name='postImage' className='fileField' type='file' onChange={handlePostImage}></input>
                 <button type="submit" className='uploadButton'><b>U P L O A D</b></button>
             </form>
         </div>
