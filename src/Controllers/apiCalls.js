@@ -46,7 +46,6 @@ const saveProfileInfo = (userData, dispatch) => {
 }
 
 const savePost = async (postImage, postText, user, posts, setPosts) => {
-    let postID;
     const imgForm = new FormData()
     imgForm.append('file', postImage)
     imgForm.append('fileName', postImage.name)
@@ -64,26 +63,26 @@ const savePost = async (postImage, postText, user, posts, setPosts) => {
             data: {
             userID: user.uid,
             postText: postText,
-            postImage: resData.data
+            postImage: resData.data,
             },
         })
         .then(res => {
             console.log("Saved Post in Database")
-            postID = res.data.postID
+            console.log(res)
             setPosts(posts.concat({
               name: user.name,
               postID: res.data.postID,
               userID: user.uid,
               postText: postText,
-              postImage: resData.data
+              postImage: resData.data,
+              photoURL: user.photoURL,
+              postTimestamp: res.data.postTimestamp
             }))
         })
     } 
     catch (e) {
         console.log(e);
     }
-
-    return postID
 }
 
 export {

@@ -6,12 +6,13 @@ import Temp from '../../assets/HomeAssets/temp.jpg'
 import './Post.css'
 
 const Post = ({post}) => {
+    console.log(post.photoURL)
     return (
         <div className='postContainer'>
             <div className='upperArea'>
                 <div className='nameImageTime'>
-                    <img className='profilePic' src={Profile} alt="pfp"></img>
-                    <h4 style={{paddingLeft: 5, color: "#4E4E4E"}}>{post.name} <span style={{fontSize: '10px'}}><em>posted at {(new Date()).toUTCString()}</em></span></h4>
+                    <img className='profilePic' src={post.photoURL} alt="pfp"></img>
+                    <h4 style={{paddingLeft: 5, color: "#4E4E4E"}}>{post.name} <span style={{fontSize: '10px'}}><em>posted at {(new Date(new Date(post.postTimestamp).setHours(new Date(post.postTimestamp).getHours() +  5))).toUTCString()}</em></span></h4>
                 </div>
                 <div>
                     <MoreHorizIcon fontSize='large'></MoreHorizIcon>

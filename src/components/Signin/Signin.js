@@ -17,6 +17,7 @@ const Signin = ({goToProfile, setGoToProfile}) => {
       .signInWithPopup(provider)
       .then((result) => {
         const temp = result.user.multiFactor.user;
+        console.log(temp)
 
         const tempUser = {
           uid: temp.uid,
@@ -24,6 +25,7 @@ const Signin = ({goToProfile, setGoToProfile}) => {
           email: temp.email,
           region: null,
           interests: [],
+          photoURL: temp.photoURL
         };
 
         // sends data/state to the store
