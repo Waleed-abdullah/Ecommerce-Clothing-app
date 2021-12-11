@@ -25,9 +25,7 @@ const NewPost = ({posts, setPosts}) => {
         event.preventDefault()
         console.log('Entered Submit')
         
-        if (postImage){
-            savePost(postImage, postText, user, posts, setPosts)
-        }
+        savePost(postImage, postText, user, posts, setPosts)
 
         setPostImage(null)
         setPostText('')

@@ -46,16 +46,23 @@ const saveProfileInfo = (userData, dispatch) => {
 }
 
 const savePost = async (postImage, postText, user, posts, setPosts) => {
-    const imgForm = new FormData()
-    imgForm.append('file', postImage)
-    imgForm.append('fileName', postImage.name)
+  const imgForm = new FormData()  
+  if (postImage){
+      imgForm.append('file', postImage)
+      imgForm.append('fileName', postImage.name)
+  }
+    
 
     try {
-        const resData = await axios.post(
-          "http://localhost:5000/upload/postImage",
-          imgForm
-        );
-        console.log(resData.data);
+        let resData
+        if (postImage){
+          resData = await axios.post(
+            "http://localhost:5000/upload/postImage",
+            imgForm
+          );
+        }
+        
+        console.log(resData);
 
         await axios({
             method: 'post',
@@ -63,7 +70,7 @@ const savePost = async (postImage, postText, user, posts, setPosts) => {
             data: {
             userID: user.uid,
             postText: postText,
-            postImage: resData.data,
+            postImage: resData ? resData.data : null,
             },
         })
         .then(res => {
@@ -74,7 +81,7 @@ const savePost = async (postImage, postText, user, posts, setPosts) => {
               postID: res.data.postID,
               userID: user.uid,
               postText: postText,
-              postImage: resData.data,
+              postImage: resData ? resData.data : null,
               photoURL: user.photoURL,
               postTimestamp: res.data.postTimestamp
             }))

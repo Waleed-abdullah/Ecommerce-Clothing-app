@@ -1,12 +1,18 @@
-import React from 'react'
-import Profile from '../../assets/HomeAssets/unnamed.png'
+import React, { useState } from 'react'
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 import FavoriteIcon from '@mui/icons-material/Favorite';
-import Temp from '../../assets/HomeAssets/temp.jpg'
 import './Post.css'
 
 const Post = ({post}) => {
-    console.log(post.photoURL)
+    const [colorOfHeart, setColorOfHeart] = useState("#EEE5EE")
+    const handleChangeHeartColor = () => {
+        console.log('in heart handle')
+        if (colorOfHeart === "#EEE5EE"){
+            setColorOfHeart("#804FC0")
+        }
+        else {setColorOfHeart("#EEE5EE")}
+    }
+
     return (
         <div className='postContainer'>
             <div className='upperArea'>
@@ -23,16 +29,26 @@ const Post = ({post}) => {
                 <p className='postText'>{post.postText}</p>
             </div>
 
-            <div className='postImageContainer'>
-                <img className='postImage' src={`http://localhost:5000/retrieve/${post.postImage}`} width='500px' alt='postImage'></img>
-            </div>
+        {
+            post.postImage ? (
+                <div className='postImageContainer'>
+                    <img className='postImage' src={`http://localhost:5000/retrieve/${post.postImage}`} width='500px' alt='postImage'></img>
+                </div>
+            ) : (
+                console.log('')
+            )
+
+        }
+
 
             <div className='cLContainer'>
-                <FavoriteIcon fontSize='large' sx={{color: '#804FC0'}}></FavoriteIcon>
+                <FavoriteIcon onClick={handleChangeHeartColor} fontSize='large' sx={{color: colorOfHeart}}></FavoriteIcon>
                 <input className='commentField' type='text' placeholder='Write your Comment'></input>
             </div>
 
             <div className='commentButtonContainer'>
+                <button className='commentButton'>View Comments</button>
+            
                 <button className='commentButton' type='submit'><b>Comment</b></button>
             </div>
         </div>
@@ -43,3 +59,4 @@ export default Post
 
 // #e5d9b7
 // #804FC0
+// userID, postID, liked
