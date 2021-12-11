@@ -14,7 +14,7 @@ const HomePage = () => {
     useEffect(async () => {
           console.log(user)
           const res = await axios.get(`http://localhost:5000/get/post/${user.uid}`)
-          if (posts.length == 0) {setPosts(posts.concat(res.data.results))}
+          if (posts.length === 0) {setPosts(posts.concat(res.data.results))}
     }, [])
     
     return (
@@ -27,7 +27,7 @@ const HomePage = () => {
           {
             posts.map((post) => (
                 <Post
-                    key={post.id}
+                    key={post.postID}
                     post = {post}
                 />
             ))

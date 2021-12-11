@@ -1,6 +1,5 @@
 import React, {useState} from 'react'
 import './NewPost.css'
-import axios from 'axios';
 import { useStateValue } from '../../State/StateProvider';
 import { savePost } from '../../Controllers/apiCalls';
 

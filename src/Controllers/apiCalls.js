@@ -76,7 +76,8 @@ const savePost = async (postImage, postText, user, posts, setPosts) => {
         .then(res => {
             console.log("Saved Post in Database")
             console.log(res)
-            setPosts(posts.concat({
+            
+            const temp = posts.concat({
               name: user.name,
               postID: res.data.postID,
               userID: user.uid,
@@ -84,7 +85,12 @@ const savePost = async (postImage, postText, user, posts, setPosts) => {
               postImage: resData ? resData.data : null,
               photoURL: user.photoURL,
               postTimestamp: res.data.postTimestamp
-            }))
+            })
+            temp.sort((a,b) => {
+              return b.postID - a.postID
+            })
+
+            setPosts(temp)
         })
     } 
     catch (e) {

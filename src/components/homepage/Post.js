@@ -2,15 +2,23 @@ import React, { useState } from 'react'
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import './Post.css'
+import Comment from './Comment.js'
 
 const Post = ({post}) => {
     const [colorOfHeart, setColorOfHeart] = useState("#EEE5EE")
+    const [showComments, setShowComments] = useState(false)
+
     const handleChangeHeartColor = () => {
         console.log('in heart handle')
         if (colorOfHeart === "#EEE5EE"){
             setColorOfHeart("#804FC0")
         }
         else {setColorOfHeart("#EEE5EE")}
+    }
+
+    const handleChangeInViewComments = () => {
+        console.log('in view comments')
+        showComments ? setShowComments(false) : setShowComments(true)
     }
 
     return (
@@ -37,7 +45,6 @@ const Post = ({post}) => {
             ) : (
                 console.log('')
             )
-
         }
 
 
@@ -47,10 +54,23 @@ const Post = ({post}) => {
             </div>
 
             <div className='commentButtonContainer'>
-                <button className='commentButton'>View Comments</button>
-            
+                <button onClick={handleChangeInViewComments} className='commentButton'>View Comments</button>
                 <button className='commentButton' type='submit'><b>Comment</b></button>
             </div>
+
+            {
+                showComments ?
+                (
+                    <React.Fragment>
+                    <Comment/>
+                    <Comment/>
+                    <Comment/>
+                    </React.Fragment>
+                ) : (
+                    console.log('')
+                )
+            }
+
         </div>
     )
 }
