@@ -98,8 +98,39 @@ const savePost = async (postImage, postText, user, posts, setPosts) => {
     }
 }
 
+const saveComment = async (user, postID, commentText, comments, setComments) => {
+  await axios({
+    method: 'post',
+    url: `http://localhost:5000/upload/comment`,
+    data: {
+    userID: user.uid,
+    postID: postID,
+    commentText: commentText,
+    }
+  })
+  .then(res => {
+    console.log("Saved comment in database")
+    console.log(res)
+
+    const temp = comments.concat({
+      commentID: res.data.commentID,
+      userID: user.uid,
+      commentText: commentText,
+      postID: postID,
+      name: user.name,
+      photoURL: user.photoURL
+    })
+    temp.sort((a,b) => {
+      return b.commentID - a.commentID
+    })
+
+    setComments(temp)
+  })
+}
+
 export {
     checkIfUserExists,
     saveProfileInfo,
     savePost,
+    saveComment,
 }

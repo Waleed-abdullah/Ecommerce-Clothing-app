@@ -1,6 +1,7 @@
 .showCommentContainer{
     margin-top: 10px;
     padding-bottom: 10px;
+    border-color: black;
 }
 
 .commentTextContainer{
@@ -17,7 +18,7 @@
     padding-right: 2;
 }
 
-.profilePic{
+.profilePicInComment{
     display: inline-block;
     width: 30px;
     height: 30px;

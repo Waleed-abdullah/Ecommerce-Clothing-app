@@ -1,12 +1,24 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import './Post.css'
 import Comment from './Comment.js'
+import { saveComment } from '../../Controllers/apiCalls';
+import { useStateValue } from '../../State/StateProvider';
+import axios from 'axios';
 
 const Post = ({post}) => {
+    const [{ user }, dispatch] = useStateValue()
     const [colorOfHeart, setColorOfHeart] = useState("#EEE5EE")
     const [showComments, setShowComments] = useState(false)
+    const [commentText, setCommentText] = useState('')
+    const [comments, setComments] = useState([])
+    
+    useEffect( async () => {
+        console.log('Inside post useffect')
+        const res = await axios.get(`http://localhost:5000/get/comment/${post.postID}`)
+        if (comments.length === 0) {setComments(comments.concat(res.data.results))} 
+    }, [])
 
     const handleChangeHeartColor = () => {
         console.log('in heart handle')
@@ -20,6 +32,19 @@ const Post = ({post}) => {
         console.log('in view comments')
         showComments ? setShowComments(false) : setShowComments(true)
     }
+
+    const handleCommentText = (event) => {
+        setCommentText(event.target.value)
+    }
+    
+    const handleCommentSubmit = (event) => {
+        event.preventDefault()
+        console.log("In here")
+        saveComment(user, post.postID, commentText, comments, setComments)
+
+        setCommentText('')
+    }
+
 
     return (
         <div className='postContainer'>
@@ -47,25 +72,27 @@ const Post = ({post}) => {
             )
         }
 
-
+            <form onSubmit={handleCommentSubmit}>
             <div className='cLContainer'>
                 <FavoriteIcon onClick={handleChangeHeartColor} fontSize='large' sx={{color: colorOfHeart}}></FavoriteIcon>
-                <input className='commentField' type='text' placeholder='Write your Comment'></input>
+                <input onChange={handleCommentText} value={commentText} className='commentField' type='text' placeholder='Write your Comment'></input>
             </div>
 
             <div className='commentButtonContainer'>
-                <button onClick={handleChangeInViewComments} className='commentButton'>View Comments</button>
-                <button className='commentButton' type='submit'><b>Comment</b></button>
+                <button type='button' onClick={handleChangeInViewComments} className='commentButton'>View Comments</button>
+                <button type='submit' className='commentButton' type='submit'><b>Comment</b></button>
             </div>
+            </form>
 
             {
                 showComments ?
                 (
-                    <React.Fragment>
-                    <Comment/>
-                    <Comment/>
-                    <Comment/>
-                    </React.Fragment>
+                    comments.map((comment) => (
+                        <Comment
+                            key={comments.commentID}
+                            comment = {comment}
+                        />
+                    ))
                 ) : (
                     console.log('')
                 )
