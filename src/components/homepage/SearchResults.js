@@ -3,7 +3,6 @@ import './SearchResults.css'
 import axios from 'axios'
 
 const SearchResults = ({search}) => {
-    //const names = ['Nouman Amir', 'Ali', 'Valkrypton', 'Talha', 'Talia']
     const [searchResults, setSearchResults] = useState([])
     useEffect(async () => {
         let cancel = false
@@ -16,7 +15,6 @@ const SearchResults = ({search}) => {
             console.log(res.data.results)
             setSearchResults(res.data.results)
         }
-
         return () => cancel = true
     }, [search])
 
@@ -36,12 +34,3 @@ const SearchResults = ({search}) => {
 }
 
 export default SearchResults
-
-/*
-
-        {
-            searchResults.map((result) => (
-                <div className='result'>{result.name}</div>
-            ))
-        }
-*/

@@ -11,7 +11,6 @@ const HomePage = () => {
     const [{ user }, dispatch] = useStateValue()
     const [posts, setPosts] = useState([])
     const [search, setSearch] = useState('')
-    //const [searchResults, setSearchResults] = useState(['Nouman Amir', 'Ali', 'Valkrypton', 'Talha', 'Talia'])
 
     useEffect(async () => {
           console.log(user)
