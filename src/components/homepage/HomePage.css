@@ -39,6 +39,7 @@
 }
 
 .multi{
+    overflow: auto;
     position: fixed;
     top: 0;
     border-radius: 20px;

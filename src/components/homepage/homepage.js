@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useRef } from 'react'
 import Navbar from './NavBar';
 import Post from './Post';
 import SideBar from './SideBar';
@@ -10,6 +10,8 @@ import axios from 'axios';
 const HomePage = () => {
     const [{ user }, dispatch] = useStateValue()
     const [posts, setPosts] = useState([])
+    const [search, setSearch] = useState('')
+    //const [searchResults, setSearchResults] = useState(['Nouman Amir', 'Ali', 'Valkrypton', 'Talha', 'Talia'])
 
     useEffect(async () => {
           console.log(user)
@@ -19,7 +21,7 @@ const HomePage = () => {
     
     return (
       <React.Fragment>
-      <Navbar/>
+      <Navbar search={search} setSearch={setSearch}/>
       <div style={{backgroundColor: '#F8F2FF'}}>
       <div className='main'>
         <div className='sidebar'><SideBar/></div>
@@ -34,7 +36,7 @@ const HomePage = () => {
           }
         </div>
         <div className='multi'>
-        <MultiPurpose posts={posts} setPosts={setPosts}/>
+        <MultiPurpose posts={posts} setPosts={setPosts} search={search}/>
         </div>
       </div>
       </div>

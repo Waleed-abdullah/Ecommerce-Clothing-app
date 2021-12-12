@@ -7,7 +7,7 @@ import { saveComment } from '../../Controllers/apiCalls';
 import { useStateValue } from '../../State/StateProvider';
 import axios from 'axios';
 
-const Post = ({post}) => {
+const Post = React.memo(({post}) => {
     const [{ user }, dispatch] = useStateValue()
     const [colorOfHeart, setColorOfHeart] = useState("#EEE5EE")
     const [showComments, setShowComments] = useState(false)
@@ -100,7 +100,7 @@ const Post = ({post}) => {
 
         </div>
     )
-}
+})
 
 export default Post
 

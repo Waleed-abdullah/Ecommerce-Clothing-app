@@ -5,7 +5,7 @@ export const initialState = {
 
 export const actionTypes = {
     SET_USER: 'SET_USER',
-    SET_USER_EXISTS: 'SET_USER_EXISTS'
+    SET_USER_EXISTS: 'SET_USER_EXISTS',
 }
 
 const reducer = (initialState, action) => {
