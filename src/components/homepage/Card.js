@@ -1,8 +1,21 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
+import { useStateValue } from '../../State/StateProvider'
 import './Card.css'
 
 const Card = ({searchResult, interests}) => {
-    console.log(interests)
+    const [{ user }, dispatch] = useStateValue()
+    const [requestSent, setRequestSent] = useState('Connect')
+    const [disable, setDisable] = useState(false)
+
+    //use useEffect to check whether searchResult has been requested or not
+    //use useEffect to check whether searchResult is friend with user or not
+
+    const handleClick = () => {
+        setDisable(true)
+        setRequestSent('Request Sent')
+        //make api call here to the request table
+    }
+
     return (
         <div className='cardContainer'>
             <img className='profilePicInCard' src={searchResult.photoURL} alt='pfp'></img>
@@ -16,7 +29,11 @@ const Card = ({searchResult, interests}) => {
             }
             </div>
 
-            <button className='connectButton'>Connect</button>
+            {
+                searchResult.userID !== user.uid ? (<button className='connectButton' disabled={disable} onClick={handleClick}>{requestSent}</button>) : (
+                    console.log('')
+                )
+            }
         </div>
     )
 }
