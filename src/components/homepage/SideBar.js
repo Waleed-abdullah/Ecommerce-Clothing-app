@@ -22,7 +22,15 @@ const SideBar = () => {
       <Link to="/profile" style={{ textDecoration: 'none' }}>
         <SideBarRow Icon={PeopleOutlineIcon} title="Friends" />
       </Link>
-      <SignOutButton />
+      <div
+        style={{
+          position: 'fixed',
+          top: '90%',
+          padding: '5px',
+        }}
+      >
+        <SignOutButton />
+      </div>
     </div>
   );
 };
