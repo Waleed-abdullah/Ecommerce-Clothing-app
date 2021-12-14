@@ -11,7 +11,7 @@ const App = () => {
   const [{ user, userExists }, dispatch] = useStateValue();
   const [goToProfile, setGoToProfile] = useState(false);
 
-  if (false) {
+  if (!user && !userExists) {
     return (
       <React.Fragment>
         <MetaTags>
@@ -35,7 +35,7 @@ const App = () => {
         </Router>
       </React.Fragment>
     );
-  } else if (true) {
+  } else if (user && userExists) {
     return (
       <React.Fragment>
         <MetaTags>

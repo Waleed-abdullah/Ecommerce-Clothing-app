@@ -6,9 +6,27 @@ import FeedOutlinedIcon from '@mui/icons-material/FeedOutlined';
 import SignOutButton from './SignOutButton';
 import { Link } from 'react-router-dom';
 import { useStateValue } from '../../State/StateProvider';
+import { actionTypes } from '../../State/Reducer';
 
 const SideBar = () => {
-  const [{ user }, dispatch] = useStateValue();
+  const dispatch = useStateValue()[1];
+
+  const signOut = () => {
+    //remove the user
+
+    dispatch({
+      type: actionTypes.SET_USER,
+      user: null,
+    });
+
+    //set userExists to false
+    dispatch({
+      type: actionTypes.SET_USER_EXISTS,
+      userExists: false,
+    });
+
+    console.log('signedOut');
+  };
 
   return (
     <div>
