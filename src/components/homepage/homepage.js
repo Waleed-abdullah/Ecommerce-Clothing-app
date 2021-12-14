@@ -8,7 +8,7 @@ import { useStateValue } from '../../State/StateProvider';
 import axios from 'axios';
 
 const HomePage = () => {
-  const [{ user }, dispatch] = useStateValue();
+  const [{ user }] = useStateValue();
   const [posts, setPosts] = useState([]);
   const [search, setSearch] = useState('');
 
