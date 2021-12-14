@@ -1,35 +1,41 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState, useRef } from 'react'
 import Navbar from './NavBar';
 import Post from './Post';
 import SideBar from './SideBar';
 import MultiPurpose from './MultiPurpose';
-import NewPost from './NewPost';
 import './HomePage.css'
-import { useNavigate } from 'react-router-dom'
 import { useStateValue } from '../../State/StateProvider';
-import { useState } from 'react';
-import { Routes, Route, BrowserRouter as Router, Switch } from 'react-router-dom';
+import axios from 'axios';
 
 const HomePage = () => {
-  const [postArr, setPostArr] = useState([]);
+    const [{ user }, dispatch] = useStateValue()
+    const [posts, setPosts] = useState([])
+    const [search, setSearch] = useState('')
 
-  useEffect(() => {
-    let posts = [...postArr];
-    for(let i = 0; i <= 10; i++) {
-      posts.push(<Post/>);
-    }
-    setPostArr(posts);
-  }, [])
-
+    useEffect(async () => {
+          console.log(user)
+          const res = await axios.get(`http://localhost:5000/get/post/${user.uid}`)
+          if (posts.length === 0) {setPosts(posts.concat(res.data.results))}
+    }, [])
+    
     return (
       <React.Fragment>
-      <Navbar/>
+      <Navbar search={search} setSearch={setSearch}/>
       <div style={{backgroundColor: '#F8F2FF'}}>
       <div className='main'>
         <div className='sidebar'><SideBar/></div>
-        <div className='posts'>{postArr}</div>
+        <div className='posts'>
+          {
+            posts.map((post) => (
+                <Post
+                    key={post.postID}
+                    post = {post}
+                />
+            ))
+          }
+        </div>
         <div className='multi'>
-        <MultiPurpose/>
+        <MultiPurpose posts={posts} setPosts={setPosts} search={search}/>
         </div>
       </div>
       </div>

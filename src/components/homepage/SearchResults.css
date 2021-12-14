@@ -1,0 +1,27 @@
+.searchResultsContainer{
+    width: 100%;
+}
+
+.result{
+    display: block;
+    background-color: #804FC0;
+    filter: drop-shadow(0 4px 4px rgba(0, 0, 0, 0.25));
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    font-size: 18px;
+    border-radius: 15px;
+    text-align: center;
+    height: 50px;
+    width: 250px;
+    align-items: center;
+    padding-top: 5px;
+    font-size: larger;
+    font-weight: 500;
+    color: white;
+    border: none;
+}
+
+.result:hover{
+    background-color: #6c3da9;
+}

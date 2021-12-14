@@ -39,6 +39,7 @@
 }
 
 .multi{
+    overflow: auto;
     position: fixed;
     top: 0;
     border-radius: 20px;
@@ -46,7 +47,8 @@
     background-color: white;
     right: 1%;
     margin-top: 7%;
-    margin-right: 1%;
+    margin-right: 2px;
     height: 80%;
-    width: 22%;
+    margin-left: 100px;
+    width: 300px;
 }

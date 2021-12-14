@@ -1,7 +1,9 @@
 @media screen and (max-width: 900px) {
     .postContainer{
-        width: 400px;
+        width: 400px !important;
         margin-top: 1vh !important;
+        margin-left: 2%;
+        margin-right: 2%;
     }
     .postImage{
         width: 400px;
@@ -13,6 +15,7 @@
 }
 
 .postContainer{
+    width: 500px;
     background-color: #FFFFFF;
     padding-left: 4vh;
     padding-right: 4vh;
@@ -35,8 +38,8 @@
 
 .profilePic{
     display: inline-block;
-    width: 50px;
-    height: 50px;
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
 }
 
@@ -74,19 +77,20 @@
     border: none;
     border-radius: 15px;
     padding-left: 1vh;
+    filter: drop-shadow(0 4px 4px rgba(0, 0, 0, 0.25));
 }
 
 .commentButtonContainer{
     padding-bottom: 2.5vh;
     display: flex;
-    justify-content: end;
+    justify-content: space-between;
 }
 
 .commentButton{
     background-color: #804FC0;
     color: #FFFFFF;
     border-radius: 15px;
-    font-size: 2.2vh;
+    font-size: 12px;
     padding-top: 1vh;
     padding-bottom: 1vh;
     padding-left: 1.5vh;
