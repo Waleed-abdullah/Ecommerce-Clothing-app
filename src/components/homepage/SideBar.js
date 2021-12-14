@@ -3,6 +3,8 @@ import PeopleOutlineIcon from '@mui/icons-material/PeopleOutline';
 import ChatOutlinedIcon from '@mui/icons-material/ChatOutlined';
 import NotificationsOutlinedIcon from '@mui/icons-material/NotificationsOutlined';
 import FeedOutlinedIcon from '@mui/icons-material/FeedOutlined';
+import MeetingRoomIcon from '@mui/icons-material/MeetingRoom';
+import SignOutButton from './SignOutButton';
 import { Link } from 'react-router-dom';
 
 const SideBar = () => {
@@ -20,6 +22,7 @@ const SideBar = () => {
       <Link to="/profile" style={{ textDecoration: 'none' }}>
         <SideBarRow Icon={PeopleOutlineIcon} title="Friends" />
       </Link>
+      <SignOutButton />
     </div>
   );
 };
