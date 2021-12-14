@@ -3,11 +3,13 @@ import PeopleOutlineIcon from '@mui/icons-material/PeopleOutline';
 import ChatOutlinedIcon from '@mui/icons-material/ChatOutlined';
 import NotificationsOutlinedIcon from '@mui/icons-material/NotificationsOutlined';
 import FeedOutlinedIcon from '@mui/icons-material/FeedOutlined';
-import MeetingRoomIcon from '@mui/icons-material/MeetingRoom';
 import SignOutButton from './SignOutButton';
 import { Link } from 'react-router-dom';
+import { useStateValue } from '../../State/StateProvider';
 
 const SideBar = () => {
+  const [{ user }, dispatch] = useStateValue();
+
   return (
     <div>
       <Link to="/" style={{ textDecoration: 'none' }}>
@@ -29,7 +31,7 @@ const SideBar = () => {
           padding: '5px',
         }}
       >
-        <SignOutButton />
+        <SignOutButton handleClick={signOut} />
       </div>
     </div>
   );

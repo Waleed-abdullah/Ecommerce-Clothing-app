@@ -8,8 +8,11 @@ const useStyles = makeStyles({
     borderRadius: 20,
     boxShadow: 10,
     padding: '7px 18px',
-    backgroundImage:
-      'linear-gradient( to right,#da22ff 0%,#9733ee 51%, #da22ff 100% )',
+    backgroundColor: '#804fc0 !important',
+    '&:hover': {
+      backgroundColor: '#6c3da9 !important',
+      color: '#fff',
+    },
   },
 });
 
