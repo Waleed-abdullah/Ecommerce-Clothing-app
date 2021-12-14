@@ -8,7 +8,7 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import { useStateValue } from './State/StateProvider';
 
 const App = () => {
-  const [{ user, userExists }, dispatch] = useStateValue();
+  const [{ user, userExists }] = useStateValue();
   const [goToProfile, setGoToProfile] = useState(false);
 
   if (!user && !userExists) {
