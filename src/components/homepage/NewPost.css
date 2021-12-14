@@ -1,47 +1,48 @@
-.createPost{
-    background-color: white;
+.createPost {
+  background-color: white;
 }
 
-#h4{
-    text-align: center;
-    font-family: Coolvetica;
-    font-weight: 600;
-    font-size: 25px;
+#h4 {
+  text-align: center;
+  font-family: Coolvetica;
+  font-weight: 600;
+  font-size: 25px;
 }
 
-.postTextField{
-    margin-left: 10%;
-    margin-right: 10%;
-    padding-left: 3%;
-    height: 40px;
-    width: 230px;
-    border-radius: 15px;
-    border: none;
-    filter: drop-shadow(0 4px 4px rgba(0, 0, 0, 0.25));
+.postTextField {
+  margin-left: 10%;
+  margin-right: 10%;
+  padding-left: 3%;
+  height: 40px;
+  width: 230px;
+  border-radius: 15px;
+  border: none;
+  filter: drop-shadow(0 4px 4px rgba(0, 0, 0, 0.25));
 }
 
-.fileField{
-    margin-left: 20%;
-    margin-right: 50%;
-    margin-top: 10%;
-    width: 200px;
+.fileField {
+  margin-left: 20%;
+  margin-right: 50%;
+  margin-top: 10%;
+  width: 200px;
 }
 
-.uploadButton{
-    font-style: normal;
-    background-color: #804FC0;
-    margin-left: 17%;
-    margin-right: 25%;
-    margin-top: 10%;
-    width: 200px;
-    height: 40px;
-    border-radius: 15px;
-    color: white;
-    font-size: 2.8vh;
-    border: none;
-    filter: drop-shadow(0 4px 4px rgba(0, 0, 0, 0.25));
+.uploadButton {
+  font-style: normal;
+  background-color: #804fc0;
+  margin-left: 17%;
+  margin-right: 25%;
+  margin-top: 10%;
+  width: 200px;
+  height: 40px;
+  border-radius: 15px;
+  color: white;
+  font-size: 2.8vh;
+  border: none;
+  filter: drop-shadow(0 4px 4px rgba(0, 0, 0, 0.25));
+  cursor: pointer;
 }
 
-.uploadButton:hover{
-    background-color: #6c3da9;
+.uploadButton:hover {
+  background-color: #6c3da9;
 }
