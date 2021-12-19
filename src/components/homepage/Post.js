@@ -14,18 +14,18 @@ const Post = React.memo(({ post }) => {
   const [commentText, setCommentText] = useState('');
   const [comments, setComments] = useState([]);
 
-  useEffect(() => {
-    async function fetchdata() {
-      console.log('Inside post useffect');
-      const res = await axios.get(
-        `http://localhost:5000/get/comment/${post.postID}`
-      );
-      if (comments.length === 0) {
-        setComments(comments.concat(res.data.results));
-      }
-    }
-    fetchdata();
-  }, []);
+  // useEffect(() => {
+  //   async function fetchdata() {
+  //     console.log('Inside post useffect');
+  //     const res = await axios.get(
+  //       `http://localhost:5000/get/comment/${post.postID}`
+  //     );
+  //     if (comments.length === 0) {
+  //       setComments(comments.concat(res.data.results));
+  //     }
+  //   }
+  //   fetchdata();
+  // }, []);
 
   const handleChangeHeartColor = () => {
     console.log('in heart handle');
