@@ -1,0 +1,26 @@
+.showCommentContainer{
+    margin-top: 10px;
+    padding-bottom: 10px;
+    border-color: black;
+}
+
+.commentTextContainer{
+    max-width: 100%;
+}
+
+.commentText{
+    text-align: left;
+    word-wrap: break-word;
+}
+
+.commentNameImage{
+    display: flex;
+    padding-right: 2;
+}
+
+.profilePicInComment{
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+}

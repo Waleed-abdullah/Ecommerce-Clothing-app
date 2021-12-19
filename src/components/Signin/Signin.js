@@ -7,16 +7,17 @@ import { actionTypes } from '../../State/Reducer';
 import SignInButton from './SigninButton';
 import { checkIfUserExists } from '../../Controllers/apiCalls';
 
-const Signin = ({goToProfile, setGoToProfile}) => {
+const Signin = ({ goToProfile, setGoToProfile }) => {
   //eslint-disable-next-line
   const [{ user }, dispatch] = useStateValue();
 
   // event handler for sign in button
-  const signin = async () => {
+  const signIn = async () => {
     auth
       .signInWithPopup(provider)
       .then((result) => {
         const temp = result.user.multiFactor.user;
+        console.log(temp);
 
         const tempUser = {
           uid: temp.uid,
@@ -24,6 +25,7 @@ const Signin = ({goToProfile, setGoToProfile}) => {
           email: temp.email,
           region: null,
           interests: [],
+          photoURL: temp.photoURL,
         };
 
         // sends data/state to the store
@@ -45,7 +47,7 @@ const Signin = ({goToProfile, setGoToProfile}) => {
       <div className="imageContainer">
         <Logo />
       </div>
-      <SignInButton handleClick={signin}/>
+      <SignInButton handleClick={signIn} />
     </div>
   );
 };

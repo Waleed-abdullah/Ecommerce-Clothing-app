@@ -1,40 +1,59 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState, useRef } from 'react';
 import Navbar from './NavBar';
 import Post from './Post';
 import SideBar from './SideBar';
 import MultiPurpose from './MultiPurpose';
-import NewPost from './NewPost';
-import './HomePage.css'
-import { useNavigate } from 'react-router-dom'
+import './HomePage.css';
 import { useStateValue } from '../../State/StateProvider';
-import { useState } from 'react';
-import { Routes, Route, BrowserRouter as Router, Switch } from 'react-router-dom';
+import axios from 'axios';
 
 const HomePage = () => {
-  const [postArr, setPostArr] = useState([]);
+  const [{ user }] = useStateValue();
+  const [posts, setPosts] = useState([]);
+  const [search, setSearch] = useState('');
 
   useEffect(() => {
-    let posts = [...postArr];
-    for(let i = 0; i <= 10; i++) {
-      posts.push(<Post/>);
-    }
-    setPostArr(posts);
-  }, [])
+    async function fetchUsersPosts() {
+      let temp = []
+      const res = await axios.get(`http://localhost:5000/get/post/${user.uid}`);
+      temp = temp.concat(res.data.results)
+      const resForFriends = await axios.get(`http://localhost:5000/friends`, {params: { userID: user.uid, email: user.email }});
+      
+      for (const friend of resForFriends.data){
+        const x = await axios.get(`http://localhost:5000/get/post/${friend.userID}`)
+        temp = temp.concat(x.data.results)
+      }
 
-    return (
-      <React.Fragment>
-      <Navbar/>
-      <div style={{backgroundColor: '#F8F2FF'}}>
-      <div className='main'>
-        <div className='sidebar'><SideBar/></div>
-        <div className='posts'>{postArr}</div>
-        <div className='multi'>
-        <MultiPurpose/>
+      if (posts.length === 0) {
+        temp.sort((a, b) => {
+          return b.postID - a.postID
+        })
+        setPosts(posts.concat(temp));
+      }
+    }
+    fetchUsersPosts();
+  }, []);
+
+  return (
+    <React.Fragment>
+      <Navbar search={search} setSearch={setSearch} />
+      <div style={{ backgroundColor: '#F8F2FF' }}>
+        <div className="main">
+          <div className="sidebar">
+            <SideBar />
+          </div>
+          <div className="posts">
+            {posts.map((post) => (
+              <Post key={post.postID} post={post} />
+            ))}
+          </div>
+          <div className="multi">
+            <MultiPurpose posts={posts} setPosts={setPosts} search={search} />
+          </div>
         </div>
       </div>
-      </div>
-      </React.Fragment>
-    )
+    </React.Fragment>
+  );
 };
 
 export default HomePage;
