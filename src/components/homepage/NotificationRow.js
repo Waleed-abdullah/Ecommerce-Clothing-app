@@ -1,13 +1,30 @@
 import './NotificationRow.css';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import { Button } from '@mui/material';
+import axios from 'axios';
+import { useStateValue } from '../../State/StateProvider';
 
 const NotificationRow = ({ NotificationType, NotificationData }) => {
+  const [{user}] = useStateValue()
   const acceptRequest = async () => {
-    console.log('accept');
+    await axios({
+      method: 'post',
+      url: `http://localhost:5000/accept`,
+      data: {
+        loggedInUserID: user.uid,
+        notifUserID: NotificationData.userID
+      }
+    })
   };
   const rejectRequest = async () => {
-    console.log('reject');
+    await axios({
+      method: 'delete',
+      url: `http://localhost:5000/reject`,
+      data: {
+        userID: user.uid,
+        requestSentByID: NotificationData.userID
+      }
+    })
   };
 
   switch (NotificationType) {
