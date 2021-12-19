@@ -28,7 +28,7 @@ const SearchResults = ({ search }) => {
       }
       return () => (cancel = true);
     }
-    fetchData();
+    return fetchData();
   }, [search]);
 
   const handleClick = async (event) => {
