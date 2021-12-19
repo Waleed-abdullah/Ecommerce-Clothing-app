@@ -4,7 +4,11 @@ import { Button } from '@mui/material';
 import axios from 'axios';
 import { useStateValue } from '../../State/StateProvider';
 
-const NotificationRow = ({ NotificationType, NotificationData }) => {
+const NotificationRow = ({
+  NotificationType,
+  NotificationData,
+  setRequests,
+}) => {
   const [{ user }] = useStateValue();
   const acceptRequest = async () => {
     await axios({
@@ -15,6 +19,7 @@ const NotificationRow = ({ NotificationType, NotificationData }) => {
         notifUserID: NotificationData.userID,
       },
     });
+    removeNotification();
   };
   const rejectRequest = async () => {
     await axios({
@@ -24,6 +29,19 @@ const NotificationRow = ({ NotificationType, NotificationData }) => {
         userID: user.uid,
         reqSentByID: NotificationData.userID,
       },
+    });
+    removeNotification();
+  };
+
+  const removeNotification = () => {
+    setRequests((prevState) => {
+      const newState = [];
+      for (const notification of prevState) {
+        if (!(notification.userID === NotificationData.userID)) {
+          newState.push(notification);
+        }
+      }
+      return newState;
     });
   };
 
