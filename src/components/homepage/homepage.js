@@ -14,9 +14,21 @@ const HomePage = () => {
 
   useEffect(() => {
     async function fetchUsersPosts() {
+      let temp = []
       const res = await axios.get(`http://localhost:5000/get/post/${user.uid}`);
+      temp = temp.concat(res.data.results)
+      const resForFriends = await axios.get(`http://localhost:5000/friends`, {params: { userID: user.uid, email: user.email }});
+      
+      for (const friend of resForFriends.data){
+        const x = await axios.get(`http://localhost:5000/get/post/${friend.userID}`)
+        temp = temp.concat(x.data.results)
+      }
+
       if (posts.length === 0) {
-        setPosts(posts.concat(res.data.results));
+        temp.sort((a, b) => {
+          return b.postID - a.postID
+        })
+        setPosts(posts.concat(temp));
       }
     }
     fetchUsersPosts();
