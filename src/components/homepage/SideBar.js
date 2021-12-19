@@ -12,7 +12,7 @@ import { actionTypes } from '../../State/Reducer';
 const SideBar = () => {
   const dispatch = useStateValue()[1];
   const [selected, setSelected] = useState({
-    Feed: false,
+    Feed: true,
     Notifications: false,
     Messages: false,
     Friends: false,
@@ -59,7 +59,7 @@ const SideBar = () => {
           setSelected={setSelected}
         />
       </Link>
-      <Link to="/profile" style={{ textDecoration: 'none' }}>
+      <Link to="/friends" style={{ textDecoration: 'none' }}>
         <SideBarRow
           Icon={PeopleOutlineIcon}
           title="Friends"
