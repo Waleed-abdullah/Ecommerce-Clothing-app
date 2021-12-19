@@ -30,12 +30,12 @@ const NotificationRow = ({ NotificationType, NotificationData }) => {
   switch (NotificationType) {
     case 'Request':
       return (
-        <div class="card">
-          <div class="container">
+        <div className="card">
+          <div className="container">
             <AccountCircleIcon />
             <h4>{`${NotificationData.name} sent you a friend request`}</h4>
           </div>
-          <div class="buttonContainer">
+          <div className="buttonContainer">
             <Button
               variant="contained"
               style={{

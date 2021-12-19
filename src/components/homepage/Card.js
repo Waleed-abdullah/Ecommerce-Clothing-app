@@ -7,6 +7,7 @@ const Card = ({searchResult, interests}) => {
     const [{ user }, dispatch] = useStateValue()
     const [requestSent, setRequestSent] = useState('Connect')
     const [alreadySent, setAlreadySent] = useState(false)
+    const [disable, setDisable]= useState(false)
 
     //use useEffect to check whether searchResult has been requested or not
     useEffect(() => {
@@ -21,7 +22,17 @@ const Card = ({searchResult, interests}) => {
                 setAlreadySent(false)
             }
         }
+        async function getFriends(){
+            const res = await axios.get(`http://localhost:5000/friends`, {params: { userID: user.uid, email: user.email }});
+            let flag = res.data.find(result => result.userID === searchResult.userID)
+            if (flag){
+                setRequestSent('Friends')
+                setAlreadySent(true)
+                setDisable(true)
+            }
+        }
         getRequested()
+        getFriends()
     }, [])
     //use useEffect to check whether searchResult is friend with user or not
 
@@ -66,7 +77,7 @@ const Card = ({searchResult, interests}) => {
             </div>
 
             {
-                searchResult.userID !== user.uid ? (<button className='connectButton' onClick={handleClick}>{requestSent}</button>) : (
+                searchResult.userID !== user.uid ? (<button className='connectButton' disabled={disable} onClick={handleClick}>{requestSent}</button>) : (
                     console.log('')
                 )
             }
