@@ -2,8 +2,7 @@ import { useEffect, useState } from 'react';
 import './NotificationList.css';
 import NotificationRow from './NotificationRow';
 import { useStateValue } from '../../State/StateProvider';
-import { getRequestNotifs } from '../../Controllers/apiCalls';
-
+import axios from 'axios';
 const Notifications = () => {
   const [requests, setRequests] = useState([]);
   const [{ user }] = useStateValue();
@@ -11,8 +10,11 @@ const Notifications = () => {
   useEffect(() => {
     async function fetchData() {
       //get the requests from backend
-      const reqNotifs = getRequestNotifs(user);
-      setRequests(reqNotifs);
+      const res = await axios.get(`http://localhost:5000/notif/requests`, {
+        params: { userID: user.uid, email: user.email },
+      });
+      console.log(res);
+      setRequests(res.data);
     }
     fetchData();
   }, []);

@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import './FriendsList.css';
 import FriendRow from './FriendRow';
-import { getFriendsList } from '../../Controllers/apiCalls';
 import { useStateValue } from '../../State/StateProvider';
 import axios from 'axios';
 
