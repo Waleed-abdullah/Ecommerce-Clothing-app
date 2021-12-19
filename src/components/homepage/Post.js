@@ -14,28 +14,24 @@ const Post = React.memo(({ post }) => {
   const [comments, setComments] = useState([]);
   const [colorOfHeart, setColorOfHeart] = useState('#EEE5EE');
 
-  // useEffect(() => {
-  //   async function fetchComments() {
-  //     const res = await axios.get(
-  //       `http://localhost:5000/get/comment/${post.postID}`
-  //     );
-  //     if (comments.length === 0) {
-  //       setComments(comments.concat(res.data.results));
-  //     }
-  //   }
-  //   async function fetchLikes() {
-  //     const res = await axios.get(`http://localhost:5000/get/like`, {
-  //       params: { userID: user.uid, postID: post.postID },
-  //     });
-  //     if (res.data.results.length > 0) {
-  //       setColorOfHeart('#804FC0');
-  //     } else {
-  //       setColorOfHeart('#EEE5EE');
-  //     }
-  //   }
-  //   fetchComments();
-  //   fetchLikes();
-  // }, []);
+  useEffect(() => {
+    async function fetchComments() {
+      const res = await axios.get(`http://localhost:5000/get/comment/${post.postID}`);
+      if (comments.length === 0) {
+        setComments(comments.concat(res.data.results));
+      }
+    }
+    async function fetchLikes() {
+      const res = await axios.get(`http://localhost:5000/get/like`, {params: { userID: user.uid, postID: post.postID }});
+      if (res.data.results.length > 0) {
+        setColorOfHeart('#804FC0');
+      } else {
+        setColorOfHeart('#EEE5EE');
+      }
+    }
+    fetchComments();
+    fetchLikes();
+  }, []);
 
   const handleChangeHeartColor = async () => {
     console.log('in heart handle');

@@ -11,8 +11,7 @@ const App = () => {
   const [{ user, userExists }] = useStateValue();
   const [goToProfile, setGoToProfile] = useState(false);
 
-  if (false) {
-    // !user && !userExists
+  if (!user && !userExists) {
     return (
       <React.Fragment>
         <MetaTags>
