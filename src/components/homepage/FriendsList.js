@@ -1,20 +1,18 @@
 import { useEffect, useState } from 'react';
 import './FriendsList.css';
 import FriendRow from './FriendRow';
+import { getFriendsList } from '../../Controllers/apiCalls';
+import { useStateValue } from '../../State/StateProvider';
 
 const FriendsList = () => {
   const [friends, setFriends] = useState([]);
+  const [{ user }] = useStateValue();
 
   useEffect(() => {
     async function fetchData() {
       //load the users into state
-      setFriends([
-        {
-          id: 'gibberish',
-          userName: 'Waleed',
-        },
-      ]);
-      console.log('uwu');
+      const friendList = getFriendsList(user);
+      setFriends(friendList);
     }
     fetchData();
   }, []);
