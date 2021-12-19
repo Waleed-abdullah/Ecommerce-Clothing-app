@@ -7,65 +7,58 @@ import { saveComment } from '../../Controllers/apiCalls';
 import { useStateValue } from '../../State/StateProvider';
 import axios from 'axios';
 
-const Post = React.memo(({post}) => {
-    const [{ user }, dispatch] = useStateValue()
-    const [showComments, setShowComments] = useState(false)
-    const [commentText, setCommentText] = useState('')
-    const [comments, setComments] = useState([])
-    const [colorOfHeart, setColorOfHeart] = useState("#EEE5EE")
-    
-    useEffect(() => {
-        async function fetchComments() {
-            const res = await axios.get(`http://localhost:5000/get/comment/${post.postID}`)
-            if (comments.length === 0) {setComments(comments.concat(res.data.results))} 
-        }
-        async function fetchLikes() {
-            const res = await axios.get(`http://localhost:5000/get/like`, {params : {userID: user.uid, postID: post.postID}})
-            if (res.data.results.length > 0){
-                setColorOfHeart("#804FC0")
-            }
-            else{
-                setColorOfHeart("#EEE5EE")
-            }
-        }
-        fetchComments()
-        fetchLikes()
-    }, [])
+const Post = React.memo(({ post }) => {
+  const [{ user }, dispatch] = useStateValue();
+  const [showComments, setShowComments] = useState(false);
+  const [commentText, setCommentText] = useState('');
+  const [comments, setComments] = useState([]);
+  const [colorOfHeart, setColorOfHeart] = useState('#EEE5EE');
 
-    const handleChangeHeartColor = async () => {
-        console.log('in heart handle')
-        if (colorOfHeart === "#EEE5EE"){
-            setColorOfHeart("#804FC0")
-            await axios({
-                method: 'post',
-                url: `http://localhost:5000/set/like`,
-                data: {
-                  userID: user.uid,
-                  postID: post.postID
-                },
-            })
-        }
-        else {
-            setColorOfHeart("#EEE5EE")
-            await axios({
-                method: 'delete',
-                url: `http://localhost:5000/delete/like`,
-                data: {
-                  userID: user.uid,
-                  postID: post.postID
-                },
-            })
-        }
-    }
-    fetchdata();
-  }, []);
+  // useEffect(() => {
+  //   async function fetchComments() {
+  //     const res = await axios.get(
+  //       `http://localhost:5000/get/comment/${post.postID}`
+  //     );
+  //     if (comments.length === 0) {
+  //       setComments(comments.concat(res.data.results));
+  //     }
+  //   }
+  //   async function fetchLikes() {
+  //     const res = await axios.get(`http://localhost:5000/get/like`, {
+  //       params: { userID: user.uid, postID: post.postID },
+  //     });
+  //     if (res.data.results.length > 0) {
+  //       setColorOfHeart('#804FC0');
+  //     } else {
+  //       setColorOfHeart('#EEE5EE');
+  //     }
+  //   }
+  //   fetchComments();
+  //   fetchLikes();
+  // }, []);
 
-  const handleChangeHeartColor = () => {
+  const handleChangeHeartColor = async () => {
     console.log('in heart handle');
     if (colorOfHeart === '#EEE5EE') {
       setColorOfHeart('#804FC0');
+      await axios({
+        method: 'post',
+        url: `http://localhost:5000/set/like`,
+        data: {
+          userID: user.uid,
+          postID: post.postID,
+        },
+      });
     } else {
       setColorOfHeart('#EEE5EE');
+      await axios({
+        method: 'delete',
+        url: `http://localhost:5000/delete/like`,
+        data: {
+          userID: user.uid,
+          postID: post.postID,
+        },
+      });
     }
   };
 

@@ -9,27 +9,27 @@ const SearchResults = ({ search }) => {
   const [display, setDisplay] = useState(true);
   const [disable, setDisable] = useState(false);
 
-  useEffect(() => {
-    async function fetchData() {
-      let cancel = false;
-      if (search === '') {
-        setSearchResults([]);
-        setDisplay(true);
-        setDisable(false);
-      } else {
-        const res = await axios.get(
-          `http://localhost:5000/get/users/${search}`
-        );
-        setDisplay(true);
-        setDisable(false);
-        if (cancel) return;
-        console.log(res.data.results);
-        setSearchResults(res.data.results);
-      }
-      return () => (cancel = true);
-    }
-    return fetchData();
-  }, [search]);
+  // useEffect(() => {
+  //   async function fetchData() {
+  //     let cancel = false;
+  //     if (search === '') {
+  //       setSearchResults([]);
+  //       setDisplay(true);
+  //       setDisable(false);
+  //     } else {
+  //       const res = await axios.get(
+  //         `http://localhost:5000/get/users/${search}`
+  //       );
+  //       setDisplay(true);
+  //       setDisable(false);
+  //       if (cancel) return;
+  //       console.log(res.data.results);
+  //       setSearchResults(res.data.results);
+  //     }
+  //     return () => (cancel = true);
+  //   }
+  //   return fetchData();
+  // }, [search]);
 
   const handleClick = async (event) => {
     setDisplay(false);
