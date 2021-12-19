@@ -1,19 +1,18 @@
 import { useEffect, useState } from 'react';
 import './NotificationList.css';
 import NotificationRow from './NotificationRow';
+import { useStateValue } from '../../State/StateProvider';
+import { getRequestNotifs } from '../../Controllers/apiCalls';
 
 const Notifications = () => {
   const [requests, setRequests] = useState([]);
+  const [{ user }] = useStateValue();
 
   useEffect(() => {
     async function fetchData() {
       //get the requests from backend
-      setRequests([
-        {
-          id: 'gibberish',
-          userName: 'Tobey Mguire',
-        },
-      ]);
+      const reqNotifs = getRequestNotifs(user);
+      setRequests(reqNotifs);
     }
     fetchData();
   }, []);
@@ -24,6 +23,7 @@ const Notifications = () => {
       {requests.length ? (
         requests.map((request) => (
           <NotificationRow
+            key={request.userID}
             NotificationType={'Request'}
             NotificationData={request}
           />

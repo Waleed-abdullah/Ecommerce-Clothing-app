@@ -5,16 +5,16 @@ import axios from 'axios';
 import { useStateValue } from '../../State/StateProvider';
 
 const NotificationRow = ({ NotificationType, NotificationData }) => {
-  const [{user}] = useStateValue()
+  const [{ user }] = useStateValue();
   const acceptRequest = async () => {
     await axios({
       method: 'post',
       url: `http://localhost:5000/accept`,
       data: {
         loggedInUserID: user.uid,
-        notifUserID: NotificationData.userID
-      }
-    })
+        notifUserID: NotificationData.userID,
+      },
+    });
   };
   const rejectRequest = async () => {
     await axios({
@@ -22,9 +22,9 @@ const NotificationRow = ({ NotificationType, NotificationData }) => {
       url: `http://localhost:5000/reject`,
       data: {
         userID: user.uid,
-        requestSentByID: NotificationData.userID
-      }
-    })
+        reqSentByID: NotificationData.userID,
+      },
+    });
   };
 
   switch (NotificationType) {
@@ -33,7 +33,7 @@ const NotificationRow = ({ NotificationType, NotificationData }) => {
         <div class="card">
           <div class="container">
             <AccountCircleIcon />
-            <h4>{`${NotificationData.userName} sent you a friend request`}</h4>
+            <h4>{`${NotificationData.name} sent you a friend request`}</h4>
           </div>
           <div class="buttonContainer">
             <Button

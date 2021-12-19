@@ -141,10 +141,26 @@ const getFriendsList = async (user) => {
   });
 };
 
+const getRequestNotifs = (user) => {
+  axios({
+    method: 'get',
+    url: `${baseURL}/notif/requests`,
+    data: {
+      userID: user.uid,
+      email: user.email,
+    },
+  }).then((res) => {
+    if (res.data) {
+      return res.data;
+    }
+  });
+};
+
 export {
   checkIfUserExists,
   saveProfileInfo,
   savePost,
   saveComment,
   getFriendsList,
+  getRequestNotifs,
 };
