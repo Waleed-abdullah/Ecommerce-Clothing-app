@@ -126,41 +126,4 @@ const saveComment = async (
   });
 };
 
-const getFriendsList = async (user) => {
-  axios({
-    method: 'get',
-    url: `${baseURL}/friends`,
-    data: {
-      userID: user.uid,
-      email: user.email,
-    },
-  }).then((res) => {
-    if (res.data) {
-      return res.data;
-    }
-  });
-};
-
-const getRequestNotifs = (user) => {
-  axios({
-    method: 'get',
-    url: `${baseURL}/notif/requests`,
-    data: {
-      userID: user.uid,
-      email: user.email,
-    },
-  }).then((res) => {
-    if (res.data) {
-      return res.data;
-    }
-  });
-};
-
-export {
-  checkIfUserExists,
-  saveProfileInfo,
-  savePost,
-  saveComment,
-  getFriendsList,
-  getRequestNotifs,
-};
+export { checkIfUserExists, saveProfileInfo, savePost, saveComment };
