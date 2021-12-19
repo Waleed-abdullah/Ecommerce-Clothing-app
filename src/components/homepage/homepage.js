@@ -12,16 +12,16 @@ const HomePage = () => {
   const [posts, setPosts] = useState([]);
   const [search, setSearch] = useState('');
 
-  useEffect(
-    () => async () => {
+  useEffect(() => {
+    async function fetchData() {
       console.log(user);
       const res = await axios.get(`http://localhost:5000/get/post/${user.uid}`);
       if (posts.length === 0) {
         setPosts(posts.concat(res.data.results));
       }
-    },
-    []
-  );
+    }
+    fetchData();
+  }, []);
 
   return (
     <React.Fragment>

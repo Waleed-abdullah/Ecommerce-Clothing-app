@@ -9,8 +9,8 @@ const SearchResults = ({ search }) => {
   const [display, setDisplay] = useState(true);
   const [disable, setDisable] = useState(false);
 
-  useEffect(
-    () => async () => {
+  useEffect(() => {
+    async function fetchData() {
       let cancel = false;
       if (search === '') {
         setSearchResults([]);
@@ -27,9 +27,9 @@ const SearchResults = ({ search }) => {
         setSearchResults(res.data.results);
       }
       return () => (cancel = true);
-    },
-    [search]
-  );
+    }
+    fetchData();
+  }, [search]);
 
   const handleClick = async (event) => {
     setDisplay(false);
