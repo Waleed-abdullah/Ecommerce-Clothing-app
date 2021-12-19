@@ -126,25 +126,9 @@ const saveComment = async (
   });
 };
 
-const getFriendsList = async (user) => {
-  axios({
-    method: 'get',
-    url: `${baseURL}/friends`,
-    data: {
-      userID: user.uid,
-      email: user.email,
-    },
-  }).then((res) => {
-    if (res.data) {
-      return res.data;
-    }
-  });
-};
-
 export {
   checkIfUserExists,
   saveProfileInfo,
   savePost,
   saveComment,
-  getFriendsList,
 };

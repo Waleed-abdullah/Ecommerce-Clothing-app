@@ -3,6 +3,7 @@ import './FriendsList.css';
 import FriendRow from './FriendRow';
 import { getFriendsList } from '../../Controllers/apiCalls';
 import { useStateValue } from '../../State/StateProvider';
+import axios from 'axios';
 
 const FriendsList = () => {
   const [friends, setFriends] = useState([]);
@@ -11,8 +12,9 @@ const FriendsList = () => {
   useEffect(() => {
     async function fetchData() {
       //load the users into state
-      const friendList = getFriendsList(user);
-      setFriends(friendList);
+      const res = await axios.get(`http://localhost:5000/friends`, {params: { userID: user.uid, email: user.email }});
+      console.log(res)
+      setFriends(res.data);
     }
     fetchData();
   }, []);
@@ -22,7 +24,7 @@ const FriendsList = () => {
       <h4 id="h4">Friends</h4>
       {friends.length ? (
         friends.map((friend) => (
-          <FriendRow key={friend.id} friendName={friend.userName} />
+          <FriendRow key={friend.userID} friendName={friend.name} />
         ))
       ) : (
         <p id="h4">Oops! looks like you have no friends</p>
