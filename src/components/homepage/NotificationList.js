@@ -28,6 +28,7 @@ const Notifications = () => {
             key={request.userID}
             NotificationType={'Request'}
             NotificationData={request}
+            setRequests={setRequests}
           />
         ))
       ) : (
