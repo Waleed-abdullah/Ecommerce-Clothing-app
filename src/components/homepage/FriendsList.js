@@ -11,6 +11,7 @@ const FriendsList = () => {
   useEffect(() => {
     async function fetchData() {
       //load the users into state
+      console.log(user);
       const friendList = getFriendsList(user);
       setFriends(friendList);
     }
