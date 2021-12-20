@@ -36,6 +36,9 @@ const Signin = ({ goToProfile, setGoToProfile }) => {
           },
         });
 
+        // for storing the logged in user info in browser storage
+        localStorage.setItem('logged-in-user', JSON.stringify(tempUser))
+
         //call the api
         checkIfUserExists(tempUser, dispatch, setGoToProfile);
       })

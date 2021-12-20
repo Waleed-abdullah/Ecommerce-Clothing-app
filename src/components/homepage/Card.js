@@ -5,7 +5,7 @@ import axios from 'axios'
 
 const Card = ({searchResult, interests}) => {
     const [{ user }, dispatch] = useStateValue()
-    const [buttonMsg, setButtonMsg] = useState('Connect')
+    const [buttonMsg, setButtonMsg] = useState('')
 
     //use useEffect to check whether searchResult has been requested or not
     useEffect(() => {
