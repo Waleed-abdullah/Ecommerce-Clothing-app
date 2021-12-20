@@ -5,41 +5,32 @@ import axios from 'axios'
 
 const Card = ({searchResult, interests}) => {
     const [{ user }, dispatch] = useStateValue()
-    const [requestSent, setRequestSent] = useState('Connect')
-    const [alreadySent, setAlreadySent] = useState(false)
-    const [disable, setDisable]= useState(false)
+    const [buttonMsg, setButtonMsg] = useState('')
 
     //use useEffect to check whether searchResult has been requested or not
     useEffect(() => {
         async function getRequested() {
             const res = await axios.get(`http://localhost:5000/get/requested`, {params: { requestedBy: user.uid, requestedTo: searchResult.userID }});
             if (res.data.results.length > 0){
-                setRequestSent('Request Sent')
-                setAlreadySent(true)
+                setButtonMsg('Request Sent')
             }
             else {
-                setRequestSent('Connect')
-                setAlreadySent(false)
-            }
-        }
-        async function getFriends(){
-            const res = await axios.get(`http://localhost:5000/friends`, {params: { userID: user.uid, email: user.email }});
-            let flag = res.data.find(result => result.userID === searchResult.userID)
-            if (flag){
-                setRequestSent('Friends')
-                setAlreadySent(true)
-                setDisable(true)
+                const res = await axios.get(`http://localhost:5000/friends`, {params: { userID: user.uid, email: user.email }});
+                let flag = res.data.find(result => result.userID === searchResult.userID)
+                if (flag){
+                    setButtonMsg('Unfriend')
+                }
+                else {
+                    setButtonMsg('Connect')
+                }
             }
         }
         getRequested()
-        getFriends()
     }, [])
-    //use useEffect to check whether searchResult is friend with user or not
 
     const handleClick = async () => {
-        if (alreadySent){
-            setRequestSent('Connect')
-            setAlreadySent(false)
+        if (buttonMsg === 'Request Sent'){
+            setButtonMsg('Connect')
             const res = await axios({
                 method: 'delete',
                 url: `http://localhost:5000/delete/request`,
@@ -49,9 +40,8 @@ const Card = ({searchResult, interests}) => {
                 },
             })
         }
-        else {
-            setRequestSent('Request Sent')
-            setAlreadySent(true)
+        else if (buttonMsg === 'Connect') {
+            setButtonMsg('Request Sent')
             const res = await axios({
                 method: 'post',
                 url: `http://localhost:5000/send/request`,
@@ -59,6 +49,17 @@ const Card = ({searchResult, interests}) => {
                     requestedTo: searchResult.userID,
                     requestedBy: user.uid,
                 },
+            })
+        }
+        else if (buttonMsg === 'Unfriend') {
+            setButtonMsg('Connect')
+            const res = await axios({
+                method: 'delete',
+                url: `http://localhost:5000/delete/friend`,
+                data: {
+                    userID: user.uid,
+                    friendID: searchResult.userID
+                }
             })
         }
     }
@@ -77,7 +78,7 @@ const Card = ({searchResult, interests}) => {
             </div>
 
             {
-                searchResult.userID !== user.uid ? (<button className='connectButton' disabled={disable} onClick={handleClick}>{requestSent}</button>) : (
+                searchResult.userID !== user.uid ? (<button className='connectButton' onClick={handleClick}>{buttonMsg}</button>) : (
                     console.log('')
                 )
             }

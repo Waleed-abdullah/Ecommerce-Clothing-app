@@ -31,6 +31,8 @@ const SideBar = () => {
       type: actionTypes.SET_USER_EXISTS,
       userExists: false,
     });
+
+    localStorage.clear()
   };
 
   return (
