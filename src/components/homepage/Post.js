@@ -13,6 +13,7 @@ const Post = React.memo(({ post }) => {
   const [commentText, setCommentText] = useState('');
   const [comments, setComments] = useState([]);
   const [colorOfHeart, setColorOfHeart] = useState('#EEE5EE');
+  const [dotIconClick, setDotIconClick] = useState(false);
 
   useEffect(() => {
     async function fetchComments() {
@@ -75,6 +76,23 @@ const Post = React.memo(({ post }) => {
     setCommentText('');
   };
 
+  const handleMoreClick = async () => {
+    if (post.postImage){
+      await axios({
+        method: 'get',
+        url: `http://localhost:5000/retrieve/${post.postImage}`,
+        responseType: 'blob'
+      }).then((res) => {
+        const url = window.URL.createObjectURL(new Blob([res.data]));
+        const link = document.createElement('a')
+        link.href = url
+        link.setAttribute('download', `${post.postImage}`)
+        document.body.appendChild(link)
+        link.click()
+      })
+    }
+  }
+
   return (
     <div className="postContainer">
       <div className="upperArea">
@@ -95,7 +113,8 @@ const Post = React.memo(({ post }) => {
           </h4>
         </div>
         <div>
-          <MoreHorizIcon fontSize="large"></MoreHorizIcon>
+          <MoreHorizIcon onClick={() => setDotIconClick(!dotIconClick)} className='dotsIcon' fontSize="large"></MoreHorizIcon>
+          {dotIconClick ? (<div><button className='saveFileButton' onClick={handleMoreClick}>Save File</button></div>) : (console.log(''))}
         </div>
       </div>
 
