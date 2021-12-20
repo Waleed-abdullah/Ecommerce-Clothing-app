@@ -12,11 +12,20 @@ const checkIfUserExists = (userData, dispatch, setGoToProfile) => {
     },
   }).then((res) => {
     const returnedUser = res.data.user;
+    console.log(returnedUser)
     if (returnedUser) {
       dispatch({
         type: actionTypes.SET_USER_EXISTS,
         userExists: true,
       });
+      dispatch({
+        type: actionTypes.SET_USER,
+        user: {
+          ...userData,
+          name: returnedUser.name
+        }
+      })
+      localStorage.setItem('logged-in-user', JSON.stringify({...userData, name: returnedUser.name}))
     } else {
       setGoToProfile(true);
     }
