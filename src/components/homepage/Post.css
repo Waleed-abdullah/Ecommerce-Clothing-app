@@ -98,3 +98,22 @@
     border: none;
     filter: drop-shadow(0 4px 4px rgba(0, 0, 0, 0.25));
 }
+
+.dotsIcon:hover{
+    background-color: #EEE5EE;
+    border-radius: 20px;
+}
+
+.saveFileButton{
+    display: block;
+    color: white;
+    background-color: #804fc0;
+    border: none;
+    border-radius: 10px;
+    padding: 6px;
+    font-weight: 600;
+}
+
+.saveFileButton:hover{
+    background-color: #6c3da9;
+}

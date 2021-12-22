@@ -5,8 +5,10 @@ import Logo from './Logo';
 import './NavBar.css'
 import SearchBar from "material-ui-search-bar";
 import { Link } from 'react-router-dom';
+import { useStateValue } from '../../State/StateProvider';
 
 const NavBar = ({search, setSearch}) => {
+  const [{user}] = useStateValue()
   const handleChangeInSearch = (value) => {
     setSearch(value)
     console.log(value)
@@ -15,13 +17,14 @@ const NavBar = ({search, setSearch}) => {
   return (
     <Box sx={{width: '100%'}}>
       <AppBar position="fixed" sx={{bgcolor: '#ffffff'}}>
-        <Box sx={{display: 'flex', justifyContent: 'space-around', alignItems: 'center'}}>
+        <Box sx={{display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}>
           <Logo/>
 
-          <Box className="searchContainer" sx={{width: '25%'}}>
+          <Box className="searchContainer" sx={{width: '25%', marginLeft: '100px'}}>
             <Link to='search' style={{textDecoration: 'none'}}><SearchBar value={search} className='searchBar' onChange={handleChangeInSearch} style={{borderRadius: '25px', width: '100%'}}></SearchBar></Link>
           </Box>
 
+          <div className='loggedIn'>{user.name} Logged In</div>
         </Box>
       </AppBar>
     </Box>

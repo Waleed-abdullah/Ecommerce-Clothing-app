@@ -14,7 +14,6 @@ const App = () => {
 
   useEffect(() => {
     if (JSON.parse(localStorage.getItem('logged-in-user'))) {
-      console.log("inside app js useeffect")
       dispatch({
         type: actionTypes.SET_USER,
         user: JSON.parse(localStorage.getItem('logged-in-user'))

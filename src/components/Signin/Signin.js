@@ -27,20 +27,8 @@ const Signin = ({ goToProfile, setGoToProfile }) => {
           interests: [],
           photoURL: temp.photoURL,
         };
-
-        // sends data/state to the store
-        dispatch({
-          type: actionTypes.SET_USER,
-          user: {
-            ...tempUser,
-          },
-        });
-
-        // for storing the logged in user info in browser storage
-        localStorage.setItem('logged-in-user', JSON.stringify(tempUser))
-
         //call the api
-        checkIfUserExists(tempUser, dispatch, setGoToProfile);
+        checkIfUserExists(tempUser, dispatch, setGoToProfile, user);
       })
       .catch((error) => console.log(error.message));
   };
