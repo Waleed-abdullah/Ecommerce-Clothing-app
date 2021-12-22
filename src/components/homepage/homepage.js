@@ -37,7 +37,7 @@ const HomePage = () => {
   return (
     <React.Fragment>
       <Navbar search={search} setSearch={setSearch} />
-      <div style={{ backgroundColor: '#F8F2FF' }}>
+      <div style={{ backgroundColor: '#F8F2FF', height: '100%' }}>
         <div className="main">
           <div className="sidebar">
             <SideBar />
@@ -57,3 +57,5 @@ const HomePage = () => {
 };
 
 export default HomePage;
+
+// #F8F2FF

@@ -28,6 +28,12 @@ const checkIfUserExists = (userData, dispatch, setGoToProfile) => {
       localStorage.setItem('logged-in-user', JSON.stringify({...userData, name: returnedUser.name}))
     } else {
       setGoToProfile(true);
+      dispatch({
+        type: actionTypes.SET_USER,
+        user: {
+          ...userData,
+        }
+      })
     }
   });
 };
