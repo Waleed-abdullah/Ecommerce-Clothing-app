@@ -132,6 +132,7 @@ const saveComment = async (
       postID: postID,
       name: user.name,
       photoURL: user.photoURL,
+      commentTimestamp: res.data.commentTimestamp
     });
     temp.sort((a, b) => {
       return b.commentID - a.commentID;
