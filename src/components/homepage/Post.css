@@ -89,7 +89,7 @@
 .commentButton{
     background-color: #804FC0;
     color: #FFFFFF;
-    border-radius: 15px;
+    border-radius: 20px;
     font-size: 12px;
     padding-top: 1vh;
     padding-bottom: 1vh;
@@ -109,7 +109,7 @@
     color: white;
     background-color: #804fc0;
     border: none;
-    border-radius: 10px;
+    border-radius: 20px;
     padding: 6px;
     font-weight: 600;
 }

@@ -35,7 +35,7 @@ const NewPost = ({posts, setPosts}) => {
         <div className='createPost'>
             <h4 id='h4'>Create New Post</h4>
             <form onSubmit={handleSubmit}>
-                <input value={postText} className='postTextField' type='text' placeholder="What's is on your mind?" onChange={handlePostText}></input>
+                <input value={postText} className='postTextField' type='text' placeholder="What's on your mind?" onChange={handlePostText}></input>
                 <input name='postImage' className='fileField' type='file' onChange={handlePostImage}></input>
                 <button type="submit" className='uploadButton'><b>U P L O A D</b></button>
             </form>

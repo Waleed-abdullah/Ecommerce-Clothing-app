@@ -32,7 +32,7 @@ const SideBar = () => {
       userExists: false,
     });
 
-    localStorage.clear()
+    localStorage.clear();
   };
 
   return (
@@ -48,19 +48,19 @@ const SideBar = () => {
       <Link to="/notifications" style={{ textDecoration: 'none' }}>
         <SideBarRow
           Icon={NotificationsOutlinedIcon}
-          title="Notifications"
+          title="Requests"
           selected={selected}
           setSelected={setSelected}
         />
       </Link>
-      <Link to="/messages" style={{ textDecoration: 'none' }}>
+      {/* <Link to="/messages" style={{ textDecoration: 'none' }}>
         <SideBarRow
           Icon={ChatOutlinedIcon}
           title="Messages"
           selected={selected}
           setSelected={setSelected}
         />
-      </Link>
+      </Link> */}
       <Link to="/friends" style={{ textDecoration: 'none' }}>
         <SideBarRow
           Icon={PeopleOutlineIcon}
