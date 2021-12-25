@@ -49,6 +49,16 @@ const NotificationRow = ({
     case 'Request':
       return (
         <div className="card">
+          <span style={{ fontSize: '10px', marginLeft: '20px' }}>
+            <em>
+              Requested at{' '}
+              {new Date(
+                new Date(NotificationData.requestTimestamp).setHours(
+                  new Date(NotificationData.requestTimestamp).getHours() + 5
+                )
+              ).toUTCString()}
+            </em>
+          </span>
           <div className="container">
             <AccountCircleIcon />
             <h4>{`${NotificationData.name} sent you a friend request`}</h4>
