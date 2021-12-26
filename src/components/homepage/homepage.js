@@ -41,7 +41,7 @@ const HomePage = () => {
   return (
     <React.Fragment>
       <Navbar search={search} setSearch={setSearch} />
-      <div style={{ backgroundColor: '#F8F2FF', height: '100%' }}>
+      <div style={{ backgroundColor: '#F8F2FF', height: 'max-content' }}>
         <div className="main">
           <div className="sidebar">
             <SideBar />
