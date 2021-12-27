@@ -18,7 +18,7 @@ const NavBar = ({search, setSearch}) => {
     <Box sx={{width: '100%'}}>
       <AppBar position="fixed" sx={{bgcolor: '#ffffff'}}>
         <Box sx={{display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}>
-          <Logo/>
+          <Link to=''><Logo/></Link>
 
           <Box className="searchContainer" sx={{width: '25%', marginLeft: '100px'}}>
             <Link to='search' style={{textDecoration: 'none'}}><SearchBar value={search} className='searchBar' onChange={handleChangeInSearch} style={{borderRadius: '25px', width: '100%'}}></SearchBar></Link>
